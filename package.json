@@ -1,0 +1,23 @@
+{
+  "name": "ninja-ui",
+  "version": "0.0.1",
+  "description": "an excellent UI library,built with Vue.js ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yangeee/Ninja-ui.git"
+  },
+  "keywords": [
+    "vue",
+    "ui"
+  ],
+  "author": "yangeee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yangeee/vue-wheels/issues"
+  },
+  "homepage": "https://github.com/yangeee/vue-wheels#readme"
+}
