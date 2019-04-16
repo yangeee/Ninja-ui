@@ -17,10 +17,17 @@
   "author": "yangeee",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yangeee/vue-wheels/issues"
+    "url": "https://github.com/yangeee/Ninja-ui/issues"
   },
-  "homepage": "https://github.com/yangeee/vue-wheels#readme",
+  "homepage": "https://github.com/yangeee/Ninja-ui#readme",
   "dependencies": {
-    "vue": "^2.6.10"
+    "parcel-bundler": "^1.12.3",
+    "vue": "^2.6.10",
+    "vue-hot-reload-api": "^2.3.3"
+  },
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^3.0.0",
+    "sass": "^1.18.0",
+    "vue-template-compiler": "^2.6.10"
   }
 }
