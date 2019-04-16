@@ -1,5 +1,5 @@
-import Vue from 'vue/dist/vue'
-import Button from './button.vue'
+import Vue from 'vue//dist/vue.common'
+import Button from './button'
 
 
 new Vue({
