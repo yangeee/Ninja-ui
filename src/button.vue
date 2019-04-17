@@ -1,6 +1,7 @@
 <template>
   <button class="n-button" :class="{[`icon-${iconPosition}`]: true}">
-    <n-icon v-if="icon" :name='icon'></n-icon>
+    <n-icon class="icon" v-if="icon" :name="icon"></n-icon>
+    <n-icon class="loading" name="loading"></n-icon>
     <div class="content">
       <slot></slot>
     </div>
@@ -31,7 +32,13 @@ export default {
 
 
 <style lang="scss" scoped>
-
+@keyframes spin {
+  0%{transform: rotate(0deg);}
+  100%{transform: rotate(360deg);}
+}
+.loading{
+  animation: spin 2s infinite linear;
+}
 .n-button {
   font-size: var(--font-size);
   height: var(--button-height);
