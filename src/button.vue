@@ -13,7 +13,16 @@
 <script>
 export default {
   name: '',
-  props: ['icon', 'iconPosition'],
+  props: {
+    icon: {},
+    iconPosition: {
+      type: String,
+      default: 'left',
+      validator(value) {
+        return (value === 'left' || value === 'right') ? true : false
+      }
+    }
+  },
   data() {
     return {
 
@@ -49,7 +58,7 @@ export default {
   }
   > .icon {
     order: 1;
-    margin-right: .1em;
+    margin-right: 0.1em;
   }
   > .content {
     order: 2;
@@ -58,7 +67,7 @@ export default {
     > .icon {
       order: 2;
       margin-right: 0;
-      margin-left: .1em;
+      margin-left: 0.1em;
     }
     > .content {
       order: 1;
