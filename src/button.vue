@@ -1,8 +1,6 @@
 <template>
-  <button class="g-button" :class="{[`icon-${iconPosition}`]: true}">
-    <svg class="icon" v-if="icon">
-      <use :xlink:href="`#i-${icon}`"></use>
-    </svg>
+  <button class="n-button" :class="{[`icon-${iconPosition}`]: true}">
+    <n-icon v-if="icon" :name='icon'></n-icon>
     <div class="content">
       <slot></slot>
     </div>
@@ -33,11 +31,8 @@ export default {
 
 
 <style lang="scss" scoped>
-.icon {
-  width: 1em;
-  height: 1em;
-}
-.g-button {
+
+.n-button {
   font-size: var(--font-size);
   height: var(--button-height);
   padding: 0 1em;
