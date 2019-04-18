@@ -1,7 +1,8 @@
 <template>
-  <button class="n-button" :class="{[`icon-${iconPosition}`]: true}">
-    <n-icon class="icon" v-if="icon" :name="icon"></n-icon>
-    <n-icon class="loading" name="loading"></n-icon>
+  <button class="n-button" :class="{[`icon-${iconPosition}`]: true}" 
+  @click="$emit('click')">
+    <n-icon class="icon" v-if="icon && !loading" :name="icon"></n-icon>
+    <n-icon class="loading icon" name="loading" v-if="loading"></n-icon>
     <div class="content">
       <slot></slot>
     </div>
@@ -14,6 +15,10 @@ export default {
   name: '',
   props: {
     icon: {},
+    loading:{
+      type: Boolean,
+      default: false
+    },
     iconPosition: {
       type: String,
       default: 'left',
@@ -49,6 +54,7 @@ export default {
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  vertical-align: middle;
   &:hover {
     border-color: var(--border-color-hover);
   }

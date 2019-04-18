@@ -39,6 +39,7 @@
 
 <body>
     <div id="app">
+        <n-button :loading="loading" icon-position="right" @click="loading = !loading">按钮</n-button>
         <n-button icon="settings" icon-position="right">按钮</n-button>
         <n-icon name="download"></n-icon>
     </div>

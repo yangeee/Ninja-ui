@@ -9,6 +9,11 @@ new Vue({
     el: '#app',
     components:{
         "n-button": Button
+    },
+    data(){
+        return{
+            loading: false
+        }
     }
 
 }) 
