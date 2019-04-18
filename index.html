@@ -21,7 +21,7 @@
             --button-active-bg: #eee;
             --color: #333;
             --border-color: #999;
-            --border-color-hover: #666;
+            --border-color-hover: red;
         }
 
         #app {
@@ -42,6 +42,11 @@
         <n-button :loading="loading" icon-position="right" @click="loading = !loading">按钮</n-button>
         <n-button icon="settings" icon-position="right">按钮</n-button>
         <n-icon name="download"></n-icon>
+        <n-button-group>
+            <n-button icon="left">上一页</n-button>
+            <n-button>更多</n-button>
+            <n-button icon="right" icon-position="right">下一页</n-button>
+        </n-button-group>
     </div>
 
 
