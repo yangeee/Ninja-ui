@@ -14,4 +14,4 @@ var e,t=arguments[3];!function(t,n){"object"==typeof exports&&"undefined"!=typeo
 },{}],"vZyd":[function(require,module,exports) {
 "use strict";var e=o(require("vue/dist/vue")),t=o(require("./button")),u=o(require("./icon")),n=o(require("./n-button-group"));function o(e){return e&&e.__esModule?e:{default:e}}e.default.component("n-icon",u.default),new e.default({el:"#app",components:{"n-button":t.default,"n-button-group":n.default},data:function(){return{loading:!1}}});
 },{"vue/dist/vue":"BZji","./button":"iM1m","./icon":"wFXB","./n-button-group":"BC6F"}]},{},["vZyd"], null)
-//# sourceMappingURL=app.1b25b7d1.js.map
+//# sourceMappingURL=/dist/app.1b25b7d1.js.map
