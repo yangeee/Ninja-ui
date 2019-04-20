@@ -21027,7 +21027,36 @@ exports.default = void 0;
 //
 //
 var _default = {
-  name: ''
+  name: '',
+  mounted: function mounted() {
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+      for (var _iterator = this.$el.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var node = _step.value;
+        var name = node.nodeName.toLowerCase();
+
+        if (name !== 'button') {
+          console.warn("n-button-gruop\u7684\u5B50\u5143\u7D20\u53EA\u80FD\u662Fn-button\u54E6,\u4F46\u4F60\u5199\u7684\u662F".concat(node.nodeName));
+        }
+      }
+    } catch (err) {
+      _didIteratorError = true;
+      _iteratorError = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion && _iterator.return != null) {
+          _iterator.return();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
+      }
+    }
+  }
 };
 exports.default = _default;
         var $6336dd = exports.default || module.exports;
@@ -21132,7 +21161,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45001" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43185" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

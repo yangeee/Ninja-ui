@@ -8,6 +8,14 @@
 <script>
 export default {
   name: '',
+  mounted(){
+    for(let node of this.$el.children){
+      let name = node.nodeName.toLowerCase()
+      if (name !== 'button'){
+        console.warn(`n-button-gruop的子元素只能是n-button哦,但你写的是${node.nodeName}`)
+      }
+    }
+  }
 }
 </script>
 
