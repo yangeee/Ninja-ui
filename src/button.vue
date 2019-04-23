@@ -11,8 +11,13 @@
 
 
 <script>
+import Icon from './icon'
+
 export default {
   name: '',
+  components:{
+    nIcon: Icon
+  },
   props: {
     icon: {},
     loading:{

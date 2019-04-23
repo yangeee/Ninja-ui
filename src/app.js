@@ -103,8 +103,9 @@ const expect = chai.expect
         }
     })
     gButton.$mount()
-    let spy = chai.spy(function(){console.log(1)})
+    let spy = chai.spy(function(){console.log('测试按钮已被点击')})
     gButton.$on('click',spy)
     let button = gButton.$el
     button.click()
+    expect(spy).to.have.been.called()
 }
