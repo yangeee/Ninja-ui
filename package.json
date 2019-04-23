@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/yangeee/Ninja-ui#readme",
   "dependencies": {
+    "chai": "^4.2.0",
     "parcel-bundler": "^1.12.3",
     "vue": "^2.6.10",
     "vue-hot-reload-api": "^2.3.3"
@@ -30,5 +31,4 @@
     "sass": "^1.18.0",
     "vue-template-compiler": "^2.6.10"
   }
-  
 }

@@ -19,3 +19,21 @@ new Vue({
     }
 
 }) 
+
+import chai from 'chai'
+
+const expect = chai.expect
+
+{
+    const Constructor = Vue.extend(Button)
+    const button = new Constructor({
+        propsData:{
+            icon: 'settings'
+        }
+    })
+    button.$mount('#test')
+    let useElement = button.$el.querySelector('use')
+    let href = useElement.getAttribute('xlink:href')
+    expect(href).to.eq('#i-settings')
+
+}
