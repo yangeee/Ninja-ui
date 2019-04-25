@@ -1,6 +1,5 @@
 <template>
-  <button class="n-button" :class="{[`icon-${iconPosition}`]: true}" 
-  @click="$emit('click')">
+  <button class="n-button" :class="{[`icon-${iconPosition}`]: true}" @click="$emit('click')">
     <n-icon class="icon" v-if="icon && !loading" :name="icon"></n-icon>
     <n-icon class="loading icon" name="loading" v-if="loading"></n-icon>
     <div class="content">
@@ -15,12 +14,12 @@ import Icon from './icon'
 
 export default {
   name: '',
-  components:{
+  components: {
     nIcon: Icon
   },
   props: {
     icon: {},
-    loading:{
+    loading: {
       type: Boolean,
       default: false
     },
@@ -43,10 +42,14 @@ export default {
 
 <style lang="scss" scoped>
 @keyframes spin {
-  0%{transform: rotate(0deg);}
-  100%{transform: rotate(360deg);}
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
-.loading{
+.loading {
   animation: spin 2s infinite linear;
 }
 .n-button {
