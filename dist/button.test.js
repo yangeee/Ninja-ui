@@ -8684,7 +8684,7 @@ describe('Button', function () {
     var vm = new Constructor({
       propsData: {
         icon: 'settings',
-        loading: true
+        loading: false
       }
     }).$mount();
     var useElements = vm.$el.querySelectorAll('use');

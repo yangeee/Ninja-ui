@@ -25,7 +25,7 @@ const expect = chai.expect;
          const vm = new Constructor({
          propsData: {
              icon: 'settings',
-             loading: true
+             loading: false
          }
          }).$mount()
          const useElements = vm.$el.querySelectorAll('use')
