@@ -6,6 +6,7 @@
 
 
 <script>
+import './svg'
 export default {
   name: '',
   props: ['name']
