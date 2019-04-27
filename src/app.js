@@ -18,6 +18,11 @@ new Vue({
         return{
             loading: false
         }
+    },
+    methods:{
+        inputChange(){
+            console.log(1)
+        }
     }
 
 }) 

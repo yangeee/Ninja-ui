@@ -21188,6 +21188,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
 var _default = {
   name: 'NinjaInput',
   components: {
@@ -21228,8 +21231,13 @@ exports.default = _default;
     { staticClass: "wrapper", class: { error: _vm.error } },
     [
       _c("input", {
-        attrs: { disabled: _vm.disabled, readonly: _vm.readonly, type: "text" },
-        domProps: { value: _vm.value }
+        attrs: { type: "text", disabled: _vm.disabled, readonly: _vm.readonly },
+        domProps: { value: _vm.value },
+        on: {
+          change: function($event) {
+            return _vm.$emit("change", $event)
+          }
+        }
       }),
       _vm._v(" "),
       _vm.error
@@ -21309,6 +21317,11 @@ new _vue.default({
     return {
       loading: false
     };
+  },
+  methods: {
+    inputChange: function inputChange() {
+      console.log(1);
+    }
   }
 });
 },{"vue/dist/vue":"node_modules/vue/dist/vue.js","./button":"src/button.vue","./icon":"src/icon.vue","./n-button-group":"src/n-button-group.vue","./input.vue":"src/input.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
