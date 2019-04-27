@@ -30,23 +30,30 @@
         body {
             font-size: var(--font-size);
         }</style>
-    <style>
-
-    </style>
+    <style>.box{
+            margin:20px 20px;
+        }</style>
 <link rel="stylesheet" href="/app.a6a4d504.css"></head>
 
 <body>
     <div id="app">
-        <div id="test"></div>
-        <n-button :loading="loading" icon-position="right" @click="loading = !loading">按钮</n-button>
-        <n-button icon="settings" icon-position="right">按钮</n-button>
-        <n-icon name="download"></n-icon>
-        <n-button-group>
-            <n-button icon="left">上一页</n-button>
-            <n-button>更多</n-button>
-            <n-button icon="right" icon-position="right">下一页</n-button>
-        </n-button-group>
-        <n-input></n-input>
+        <div class="box">
+            <n-button :loading="loading" icon-position="right" @click="loading = !loading">按钮</n-button>
+            <n-button icon="settings" icon-position="right">按钮</n-button>
+            <n-icon name="download"></n-icon>
+            <n-button-group>
+                <n-button icon="left">上一页</n-button>
+                <n-button>更多</n-button>
+                <n-button icon="right" icon-position="right">下一页</n-button>
+            </n-button-group>
+        </div>
+        <div class="box">
+            <n-input value="张三" disabled=""></n-input>
+            <n-input value="李四" readonly=""></n-input>
+        </div>
+        <div class="box">
+            <n-input value="王" error="姓名不能少于2个字"></n-input>
+        </div>
     </div>
 
 
