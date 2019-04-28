@@ -16,7 +16,8 @@ new Vue({
     },
     data(){
         return{
-            loading: false
+            loading: false,
+            message: '杨艺'
         }
     },
     methods:{

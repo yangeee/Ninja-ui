@@ -21191,6 +21191,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
 var _default = {
   name: 'NinjaInput',
   components: {
@@ -21235,7 +21238,16 @@ exports.default = _default;
         domProps: { value: _vm.value },
         on: {
           change: function($event) {
-            return _vm.$emit("change", $event)
+            return _vm.$emit("change", $event.target.value)
+          },
+          blur: function($event) {
+            return _vm.$emit("blur", $event.target.value)
+          },
+          focus: function($event) {
+            return _vm.$emit("focus", $event.target.value)
+          },
+          input: function($event) {
+            return _vm.$emit("input", $event.target.value)
           }
         }
       }),
@@ -21315,7 +21327,8 @@ new _vue.default({
   },
   data: function data() {
     return {
-      loading: false
+      loading: false,
+      message: '杨艺'
     };
   },
   methods: {
@@ -21352,7 +21365,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "32911" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43421" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
