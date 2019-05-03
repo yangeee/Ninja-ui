@@ -3,6 +3,9 @@ import Button from './button'
 import Icon from './icon'
 import buttonGroup from './n-button-group'
 import Input from './input.vue'
+import Row from './row.vue'
+import Col from './col.vue'
+
 
 Vue.component('n-icon', Icon)
 
@@ -12,7 +15,9 @@ new Vue({
     components:{
         "n-button": Button,
         "n-button-group": buttonGroup,
-        "n-input": Input
+        "n-input": Input,
+        "n-row": Row,
+        "n-col": Col
     },
     data(){
         return{
