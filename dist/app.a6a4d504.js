@@ -21320,6 +21320,12 @@ var _default = {
   props: {
     gutter: {
       type: [Number, String]
+    },
+    align: {
+      type: String,
+      validator: function validator(value) {
+        return ['left', 'right', 'center'].includes(value);
+      }
     }
   },
   mounted: function mounted() {
@@ -21399,6 +21405,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 //
 //
 //
@@ -21408,11 +21423,42 @@ exports.default = void 0;
 //
 //
 //
+var validator = function validator(value) {
+  var keys = Object.keys(value);
+  var valid = true;
+  keys.forEach(function (key) {
+    if (!['span', 'offset'].includes(key)) {
+      valid = false;
+    }
+  });
+  return valid;
+};
+
 var _default = {
   name: 'n-col',
   props: {
     span: [Number, String],
-    offset: [Number, String]
+    offset: [Number, String],
+    phone: {
+      type: Object,
+      validator: validator
+    },
+    ipad: {
+      type: Object,
+      validator: validator
+    },
+    narrowPc: {
+      type: Object,
+      validator: validator
+    },
+    pc: {
+      type: Object,
+      validator: validator
+    },
+    widePc: {
+      type: Object,
+      validator: validator
+    }
   },
   data: function data() {
     return {
@@ -21428,13 +21474,16 @@ var _default = {
     },
     colClass: function colClass() {
       var span = this.span,
-          offset = this.offset;
-      return ["col-".concat(span), offset && "offset-".concat(offset)];
+          offset = this.offset,
+          phone = this.phone,
+          ipad = this.ipad,
+          narrowPc = this.narrowPc,
+          pc = this.pc,
+          widePc = this.widePc;
+      return [span && "col-".concat(span), offset && "offset-".concat(offset)].concat(_toConsumableArray(phone ? ["col-phone-".concat(phone.span)] : []), _toConsumableArray(ipad ? ["col-ipad-".concat(ipad.span)] : []), _toConsumableArray(narrowPc ? ["col-narrowPc-".concat(narrowPc.span)] : []), _toConsumableArray(pc ? ["col-pc-".concat(pc.span)] : []), _toConsumableArray(widePc ? ["col-widePc-".concat(widePc.span)] : []));
     }
   },
-  mounted: function mounted() {
-    console.log(this);
-  }
+  mounted: function mounted() {}
 };
 exports.default = _default;
         var $c7757c = exports.default || module.exports;
