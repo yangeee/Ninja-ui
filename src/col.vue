@@ -18,6 +18,7 @@ let validator = (value) => {
   })
   return valid
 }
+
 export default {
   name: 'n-col',
   props: {
@@ -50,6 +51,15 @@ export default {
 
     }
   },
+  methods: {
+    createClasses(obj, str = '') {
+      if(!obj){return []}
+      let arr = []
+      if(obj.span) {arr.push(`col-${str}${obj.span}`)}
+      if(obj.offset) {arr.push(`offset-${str}${obj.offset}`)}
+      return arr
+    },
+  },
   computed: {
     colStyle() {
       return {
@@ -57,18 +67,16 @@ export default {
         paddingRight: this.gutter / 2 + 'px'
       }
     },
+
     colClass() {
       let { span, offset, phone, ipad, narrowPc, pc, widePc } = this
-
+      let createClasses = this.createClasses
       return [
-        span && `col-${span}`,
-        offset && `offset-${offset}`,
-        ... (phone ? [`col-phone-${phone.span}`] : []),
-        ... (ipad ? [`col-ipad-${ipad.span}`] : []),
-        ... (narrowPc ? [`col-narrowPc-${narrowPc.span}`] : []),
-        ... (pc ? [`col-pc-${pc.span}`] : []),
-        ...(widePc ? [`col-widePc-${widePc.span}`] : [])
-
+        ...createClasses({span, offset}),
+        ...createClasses(ipad, 'ipad-'),
+        ...createClasses(narrowPc, 'narrowPc-'),
+        ...createClasses(pc, 'pc-'),
+        ...createClasses(widePc, 'widePc-')
       ]
     }
   },
@@ -85,21 +93,19 @@ export default {
 
 $class: col-;
 
-  @for $n from 1 through 24 {
-    .#{$class}#{$n} {
-      width: ($n/24) * 100%;
-    }
+@for $n from 1 through 24 {
+  .#{$class}#{$n} {
+    width: ($n/24) * 100%;
   }
+}
 
-  $offset: offset-;
+$offset: offset-;
 
-  @for $n from 1 through 24 {
-    .#{$offset}#{$n} {
-      margin-left: ($n/24) * 100%;
-    }
+@for $n from 1 through 24 {
+  .#{$offset}#{$n} {
+    margin-left: ($n/24) * 100%;
   }
-
-
+}
 
 @media (min-width: 577px) {
   $class: col-ipad-;
