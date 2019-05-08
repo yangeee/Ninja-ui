@@ -58,8 +58,8 @@ export default {
       }
     },
     colClass() {
-      let { span, offset, phone,ipad, narrowPc, pc, widePc } = this
-      
+      let { span, offset, phone, ipad, narrowPc, pc, widePc } = this
+
       return [
         span && `col-${span}`,
         offset && `offset-${offset}`,
@@ -68,7 +68,7 @@ export default {
         ... (narrowPc ? [`col-narrowPc-${narrowPc.span}`] : []),
         ... (pc ? [`col-pc-${pc.span}`] : []),
         ...(widePc ? [`col-widePc-${widePc.span}`] : [])
-      
+
       ]
     }
   },
@@ -85,39 +85,23 @@ export default {
 
 $class: col-;
 
-@for $n from 1 through 24 {
-  .#{$class}#{$n} {
-    width: ($n/24) * 100%;
-  }
-}
-
-$offset: offset-;
-
-@for $n from 1 through 24 {
-  .#{$offset}#{$n} {
-    margin-left: ($n/24) * 100%;
-  }
-}
-
-@media (max-width: 576px) {
-  $class: col-phone-;
-
   @for $n from 1 through 24 {
     .#{$class}#{$n} {
       width: ($n/24) * 100%;
     }
   }
 
-  $offset: offset-phone-;
+  $offset: offset-;
 
   @for $n from 1 through 24 {
     .#{$offset}#{$n} {
       margin-left: ($n/24) * 100%;
     }
   }
-}
 
-@media (min-width: 576px) and (max-width: 768px) {
+
+
+@media (min-width: 577px) {
   $class: col-ipad-;
 
   @for $n from 1 through 24 {
@@ -135,8 +119,8 @@ $offset: offset-;
   }
 }
 
-@media (min-width: 768px) and (max-width: 992px) {
-  $class: col-narrow-pc-;
+@media (min-width: 768px) {
+  $class: col-narrowPc-;
 
   @for $n from 1 through 24 {
     .#{$class}#{$n} {
@@ -144,7 +128,7 @@ $offset: offset-;
     }
   }
 
-  $offset: offset-narrow-pc-;
+  $offset: offset-narrowPc-;
 
   @for $n from 1 through 24 {
     .#{$offset}#{$n} {
@@ -153,7 +137,7 @@ $offset: offset-;
   }
 }
 
-@media (min-width: 576px) and (max-width: 1280px) {
+@media (min-width: 993px) {
   $class: col-pc-;
 
   @for $n from 1 through 24 {
