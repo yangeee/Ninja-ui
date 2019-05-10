@@ -12297,7 +12297,7 @@ describe('Row', function () {
       expect(getComputedStyle(row).marginLeft).to.eq('-10px');
       expect(getComputedStyle(row).marginRight).to.eq('-10px');
       var cols = vm.$el.querySelectorAll('.col');
-      expect(getComputedStyle(cols[0]).paddingLeft).to.eq('9px');
+      expect(getComputedStyle(cols[0]).paddingLeft).to.eq('10px');
       expect(getComputedStyle(cols[1]).paddingRight).to.eq('10px');
       done();
       vm.$el.remove();
