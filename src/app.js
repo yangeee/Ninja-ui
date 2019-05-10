@@ -10,6 +10,7 @@ import Footer from './footer.vue'
 import Layout from './layout.vue'
 import Sider from './sider.vue'
 import Content from './content.vue'
+import Toast from './toast.vue'
 
 
 
@@ -28,7 +29,8 @@ new Vue({
         "n-sider": Sider,
         "n-layout": Layout,
         "n-footer": Footer,
-        'n-content': Content
+        'n-content': Content,
+        "n-toast": Toast
     },
     data(){
         return{
@@ -40,6 +42,9 @@ new Vue({
         inputChange(){
             console.log(1)
         }
+    },
+    created(){
+        this.$toast()
     }
 
 }) 
