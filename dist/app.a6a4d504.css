@@ -844,9 +844,30 @@
 }
 .layout[data-v-7146d8] {
   display: flex;
-  font-display: column;
+  flex-grow: 1;
+  flex-direction: column;
   border: 1px solid red;
 }
 .layout.hasSider[data-v-7146d8] {
   flex-direction: row;
+}
+.sider[data-v-aa75a3] {
+  border: 1px solid red;
+  position: relative;
+}
+.sider > button[data-v-aa75a3] {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.fade-enter-active[data-v-aa75a3],
+.fade-leave-active[data-v-aa75a3] {
+  transition: all 2.5s;
+}
+.fade-enter[data-v-aa75a3],
+.fade-leave-to[data-v-aa75a3] {
+  margin-left: -200px;
+}
+.content[data-v-de256e]{
+  flex-grow: 1;
 }

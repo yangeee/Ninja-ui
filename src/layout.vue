@@ -17,7 +17,7 @@ export default {
   },
   mounted(){
       this.$children.forEach(vm => {
-          if(vm.$options.name === 'NinjaLayout'){
+          if(vm.$options.name === 'NinjaSider'){
               this.layoutClass.hasSider = true
           }
       })
@@ -29,7 +29,8 @@ export default {
 <style scoped lang="scss">
     .layout{
         display: flex;
-        font-display: column;
+        flex-grow:1;
+        flex-direction: column;
         border: 1px solid red;
         &.hasSider{
             flex-direction: row;

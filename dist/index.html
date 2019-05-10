@@ -23,28 +23,40 @@
             --border-color-hover: #666;
         }
 
-        #app {
-            margin: 100px;
-        }
-
         body {
             font-size: var(--font-size);
         }</style>
     <style>.demo {
             background: #ddd;
             min-height: 100px;
+        }
+
+        .sider {
+            background: #333;
+            width: 200px;
+        }
+
+        .header {
+            background: #999;
+            height: 100px;
+        }
+
+        .footer {
+            background: #ccc;
+            height: 50px;
         }</style>
 <link rel="stylesheet" href="/app.a6a4d504.css"></head>
 
 <body>
     <div id="app">
         <n-layout style="height:100vh;">
-            <n-header class="demo">header</n-header>
-        <n-layout>
             <n-sider class="demo">sider</n-sider>
-            <n-content class="demo">content</n-content>
-        </n-layout>
-        <n-footer class="demo">footer</n-footer>
+            <n-layout>
+                <n-header class="demo">header</n-header>
+                <n-content class="demo">content</n-content>
+                <n-footer class="demo">footer</n-footer>
+            </n-layout>
+
         </n-layout>
         <n-row>
             <n-col span="24" :ipad="{span: 12}" :narrow-pc="{span:8}">

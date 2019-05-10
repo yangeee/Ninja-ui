@@ -21726,7 +21726,7 @@ var _default = {
     var _this = this;
 
     this.$children.forEach(function (vm) {
-      if (vm.$options.name === 'NinjaLayout') {
+      if (vm.$options.name === 'NinjaSider') {
         _this.layoutClass.hasSider = true;
       }
     });
@@ -21799,8 +21799,19 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
 var _default = {
-  name: ''
+  name: 'NinjaSider',
+  data: function data() {
+    return {
+      visible: true
+    };
+  },
+  methods: {
+    hide: function hide() {}
+  }
 };
 exports.default = _default;
         var $aa75a3 = exports.default || module.exports;
@@ -21815,7 +21826,30 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "sider" }, [_vm._t("default")], 2)
+  return _c("transition", { attrs: { name: "fade" } }, [
+    _vm.visible
+      ? _c(
+          "div",
+          { staticClass: "sider" },
+          [
+            _vm._t("default"),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    _vm.visible = false
+                  }
+                }
+              },
+              [_vm._v("close")]
+            )
+          ],
+          2
+        )
+      : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -22000,7 +22034,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40679" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33361" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
