@@ -33,42 +33,46 @@
         }
     </style>
     <style>
-        .box {
-            margin: 20px 20px;
-        }
-        .demo{
+        .demo {
             background: #ddd;
-            height: 100px;
+            min-height: 100px;
         }
-        
     </style>
 </head>
 
 <body>
     <div id="app">
+        <n-layout style="height:100vh;">
+            <n-header class="demo">header</n-header>
+        <n-layout>
+            <n-sider class="demo">sider</n-sider>
+            <n-content class="demo">content</n-content>
+        </n-layout>
+        <n-footer class="demo">footer</n-footer>
+        </n-layout>
         <n-row>
-            <n-col span="24"  :ipad="{span: 12}" :narrow-pc="{span:8}">
+            <n-col span="24" :ipad="{span: 12}" :narrow-pc="{span:8}">
                 <div class="demo"></div>
             </n-col>
-            <n-col  span="24"  :ipad="{span: 12}" :narrow-pc="{span:8}">
+            <n-col span="24" :ipad="{span: 12}" :narrow-pc="{span:8}">
                 <div class="demo"></div>
             </n-col>
-            <n-col span="24"  :ipad="{span: 12}" :narrow-pc="{span:8}">
+            <n-col span="24" :ipad="{span: 12}" :narrow-pc="{span:8}">
                 <div class="demo"></div>
             </n-col>
-            <n-col span="24"  :ipad="{span: 12}" :narrow-pc="{span:8}">
+            <n-col span="24" :ipad="{span: 12}" :narrow-pc="{span:8}">
                 <div class="demo"></div>
             </n-col>
-            <n-col span="24"  :ipad="{span: 12}" :narrow-pc="{span:8}">
+            <n-col span="24" :ipad="{span: 12}" :narrow-pc="{span:8}">
                 <div class="demo"></div>
             </n-col>
-            <n-col  span="24"  :ipad="{span: 12}" :narrow-pc="{span:8}">
+            <n-col span="24" :ipad="{span: 12}" :narrow-pc="{span:8}">
                 <div class="demo"></div>
             </n-col>
         </n-row>
         <n-row>
-            <n-col span="2"  :pc="{span: 22}">111111111</n-col>
-            <n-col span="22"  :pc="{span: 2}">11</n-col>
+            <n-col span="2" :pc="{span: 22}">111111111</n-col>
+            <n-col span="22" :pc="{span: 2}">11</n-col>
         </n-row>
         <n-row gutter="20">
             <n-col span="2">11</n-col>

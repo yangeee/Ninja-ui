@@ -30,17 +30,22 @@
         body {
             font-size: var(--font-size);
         }</style>
-    <style>.box {
-            margin: 20px 20px;
-        }
-        .demo{
+    <style>.demo {
             background: #ddd;
-            height: 100px;
+            min-height: 100px;
         }</style>
 <link rel="stylesheet" href="/app.a6a4d504.css"></head>
 
 <body>
     <div id="app">
+        <n-layout style="height:100vh;">
+            <n-header class="demo">header</n-header>
+        <n-layout>
+            <n-sider class="demo">sider</n-sider>
+            <n-content class="demo">content</n-content>
+        </n-layout>
+        <n-footer class="demo">footer</n-footer>
+        </n-layout>
         <n-row>
             <n-col span="24" :ipad="{span: 12}" :narrow-pc="{span:8}">
                 <div class="demo"></div>
