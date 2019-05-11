@@ -871,3 +871,17 @@
 .content[data-v-de256e]{
   flex-grow: 1;
 }
+.toast[data-v-7bde9a] {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  color: white;
+  transform: translateX(-50%);
+  font-size: 14px;
+  line-height: 1.8;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
+}

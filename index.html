@@ -57,66 +57,7 @@
 
 <body>
     <div id="app">
-        <n-layout style="height:100vh;">
-            <n-sider class="demo">sider</n-sider>
-            <n-layout>
-                <n-header class="demo">header</n-header>
-                <n-content class="demo">content</n-content>
-                <n-footer class="demo">footer</n-footer>
-            </n-layout>
-
-        </n-layout>
-        <n-row>
-            <n-col span="24" :ipad="{span: 12}" :narrow-pc="{span:8}">
-                <div class="demo"></div>
-            </n-col>
-            <n-col span="24" :ipad="{span: 12}" :narrow-pc="{span:8}">
-                <div class="demo"></div>
-            </n-col>
-            <n-col span="24" :ipad="{span: 12}" :narrow-pc="{span:8}">
-                <div class="demo"></div>
-            </n-col>
-            <n-col span="24" :ipad="{span: 12}" :narrow-pc="{span:8}">
-                <div class="demo"></div>
-            </n-col>
-            <n-col span="24" :ipad="{span: 12}" :narrow-pc="{span:8}">
-                <div class="demo"></div>
-            </n-col>
-            <n-col span="24" :ipad="{span: 12}" :narrow-pc="{span:8}">
-                <div class="demo"></div>
-            </n-col>
-        </n-row>
-        <n-row>
-            <n-col span="2" :pc="{span: 22}">111111111</n-col>
-            <n-col span="22" :pc="{span: 2}">11</n-col>
-        </n-row>
-        <n-row gutter="20">
-            <n-col span="2">11</n-col>
-            <n-col span="22">11</n-col>
-        </n-row>
-        <n-row>
-            <n-col span="4"></n-col>
-            <n-col span="20" offset="2"></n-col>
-
-        </n-row>
-        <div class="box">
-            <n-button :loading="loading" icon-position="right" @click="loading = !loading">按钮</n-button>
-            <n-button icon="settings" icon-position="right">按钮</n-button>
-            <n-icon name="download"></n-icon>
-            <n-button-group>
-                <n-button icon="left">上一页</n-button>
-                <n-button>更多</n-button>
-                <n-button icon="right" icon-position="right">下一页</n-button>
-            </n-button-group>
-        </div>
-        <div class="box">
-            <n-input v-model="message"></n-input>
-            <n-input value="张三" disabled></n-input>
-            <n-input value="李四" readonly></n-input>
-        </div>
-        <div class="box">
-            <n-input value="王" @change="inputChange" error="姓名不能少于2个字"></n-input>
-        </div>
+        <button @click="showToast">点击</button>
     </div>
 
 
