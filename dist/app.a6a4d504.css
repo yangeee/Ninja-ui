@@ -884,4 +884,10 @@
   align-items: center;
   background: rgba(0, 0, 0, 0.8);
   box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
+  padding: 0 16px;
+}
+.line[data-v-7bde9a] {
+  height: 100%;
+  border-left: 1px solid #666;
+  margin: 16px;
 }

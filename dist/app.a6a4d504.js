@@ -21963,10 +21963,53 @@ exports.default = void 0;
 //
 //
 //
+//
+//
 var _default = {
   name: 'NinjaToast',
+  props: {
+    autoClose: {
+      type: Boolean,
+      default: true
+    },
+    autoCloseDelay: {
+      type: Number,
+      default: 5
+    },
+    closeButton: {
+      type: Object,
+      default: function _default() {
+        return {
+          text: '关闭',
+          callback: undefined
+        };
+      }
+    }
+  },
   data: function data() {
     return {};
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    if (this.autoClose) {
+      setTimeout(function () {
+        _this.close();
+      }, this.autoCloseDelay * 1000);
+    }
+  },
+  methods: {
+    close: function close() {
+      this.$el.remove();
+      this.$destroy();
+    },
+    onClickClose: function onClickClose() {
+      this.close();
+
+      if (this.closeButton && typeof this.closeButton.callback === 'function') {
+        this.closeButton.callback();
+      }
+    }
   }
 };
 exports.default = _default;
@@ -21982,7 +22025,31 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "toast" }, [_vm._t("default")], 2)
+  return _c(
+    "div",
+    { staticClass: "toast" },
+    [
+      _vm._t("default"),
+      _vm._v(" "),
+      _c("span", { staticClass: "line" }),
+      _vm._v(" "),
+      _vm.closeButton
+        ? _c(
+            "span",
+            {
+              staticClass: "close",
+              on: {
+                click: function($event) {
+                  return _vm.onClickClose()
+                }
+              }
+            },
+            [_vm._v(_vm._s(_vm.closeButton.text))]
+          )
+        : _vm._e()
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -22033,7 +22100,17 @@ var _default = {
   install: function install(Vue, options) {
     Vue.prototype.$toast = function (message) {
       var Construtor = Vue.extend(_toast.default);
-      var toast = new Construtor();
+      var toast = new Construtor({
+        propsData: {
+          closeButton: {
+            text: '知道了',
+            callback: function callback(toast) {
+              console.log('我知道了');
+            } //可以返回此toast实例，调用里面的方法
+
+          }
+        }
+      });
       toast.$slots.default = [message];
       toast.$mount();
       document.body.appendChild(toast.$el);
