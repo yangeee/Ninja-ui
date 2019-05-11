@@ -1,7 +1,8 @@
 <template>
-  <div class="toast">
-    <slot></slot>
-    <span class="line"></span>
+  <div class="toast" ref="toast">
+    <slot v-if="!enableHtml"></slot>
+    <div v-else v-html="$slots.default[0]"></div>
+    <span class="line" ref="line"></span>
     <span class="close" v-if="closeButton" @click="onClickClose()">{{closeButton.text}}</span>
   </div>
 </template>
@@ -18,7 +19,7 @@ export default {
     },
     autoCloseDelay: {
       type: Number,
-      default: 5
+      default: 55
     },
     closeButton: {
       type: Object,
@@ -28,6 +29,10 @@ export default {
           callback: undefined
         }
       }
+    },
+    enableHtml: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -36,22 +41,31 @@ export default {
     }
   },
   mounted() {
-    if (this.autoClose) {
-      setTimeout(() => {
-        this.close()
-      }, this.autoCloseDelay * 1000);
-    }
+    this.updateStyles()
+    this.execAutoClose()
   },
   methods: {
+    updateStyles() {
+      this.$nextTick(() => {
+        this.$refs.line.style.height = `${this.$refs.toast.getBoundingClientRect().height}px`
+      })
+    },
+    execAutoClose() {
+      if (this.autoClose) {
+        setTimeout(() => {
+          this.close()
+        }, this.autoCloseDelay * 1000);
+      }
+    },
     close() {
       this.$el.remove()
       this.$destroy()
     },
     onClickClose() {
       this.close()
-      if(this.closeButton && typeof this.closeButton.callback === 'function'){
-          this.closeButton.callback()
-      }      
+      if (this.closeButton && typeof this.closeButton.callback === 'function') {
+        this.closeButton.callback()
+      }
     }
   }
 }
@@ -70,16 +84,19 @@ $toast-bg: rgba(0, 0, 0, 0.8);
   transform: translateX(-50%);
   font-size: $font-size;
   line-height: 1.8;
-  height: $toast-height;
+  min-height: $toast-height;
   display: flex;
   align-items: center;
   background: $toast-bg;
   box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
-  padding: 0 16px;
+  padding: 0px 16px;
 }
 .line {
-  height: 100%;
   border-left: 1px solid #666;
-  margin: 16px;
+  height: 100%;
+  margin: 0 16px;
+}
+.close {
+  cursor: pointer;
 }
 </style>

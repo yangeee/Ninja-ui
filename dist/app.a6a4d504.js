@@ -21965,6 +21965,7 @@ exports.default = void 0;
 //
 //
 //
+//
 var _default = {
   name: 'NinjaToast',
   props: {
@@ -21974,7 +21975,7 @@ var _default = {
     },
     autoCloseDelay: {
       type: Number,
-      default: 5
+      default: 55
     },
     closeButton: {
       type: Object,
@@ -21984,21 +21985,36 @@ var _default = {
           callback: undefined
         };
       }
+    },
+    enableHtml: {
+      type: Boolean,
+      default: false
     }
   },
   data: function data() {
     return {};
   },
   mounted: function mounted() {
-    var _this = this;
-
-    if (this.autoClose) {
-      setTimeout(function () {
-        _this.close();
-      }, this.autoCloseDelay * 1000);
-    }
+    this.updateStyles();
+    this.execAutoClose();
   },
   methods: {
+    updateStyles: function updateStyles() {
+      var _this = this;
+
+      this.$nextTick(function () {
+        _this.$refs.line.style.height = "".concat(_this.$refs.toast.getBoundingClientRect().height, "px");
+      });
+    },
+    execAutoClose: function execAutoClose() {
+      var _this2 = this;
+
+      if (this.autoClose) {
+        setTimeout(function () {
+          _this2.close();
+        }, this.autoCloseDelay * 1000);
+      }
+    },
     close: function close() {
       this.$el.remove();
       this.$destroy();
@@ -22027,11 +22043,13 @@ exports.default = _default;
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "toast" },
+    { ref: "toast", staticClass: "toast" },
     [
-      _vm._t("default"),
+      !_vm.enableHtml
+        ? _vm._t("default")
+        : _c("div", { domProps: { innerHTML: _vm._s(_vm.$slots.default[0]) } }),
       _vm._v(" "),
-      _c("span", { staticClass: "line" }),
+      _c("span", { ref: "line", staticClass: "line" }),
       _vm._v(" "),
       _vm.closeButton
         ? _c(
@@ -22098,18 +22116,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var _default = {
   install: function install(Vue, options) {
-    Vue.prototype.$toast = function (message) {
+    Vue.prototype.$toast = function (message, props) {
       var Construtor = Vue.extend(_toast.default);
       var toast = new Construtor({
-        propsData: {
-          closeButton: {
-            text: '知道了',
-            callback: function callback(toast) {
-              console.log('我知道了');
-            } //可以返回此toast实例，调用里面的方法
-
-          }
-        }
+        propsData: props
       });
       toast.$slots.default = [message];
       toast.$mount();
@@ -22178,7 +22188,9 @@ new _vue.default({
   },
   methods: {
     showToast: function showToast() {
-      this.$toast("我是message");
+      this.$toast("<p>我是消息</p>", {
+        enableHtml: true
+      });
     },
     inputChange: function inputChange() {}
   },
