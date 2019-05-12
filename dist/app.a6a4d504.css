@@ -871,7 +871,16 @@
 .content[data-v-de256e]{
   flex-grow: 1;
 }
+@keyframes fade-in-data-v-7bde9a {
+0% {
+    opacity: 0;
+}
+100% {
+    opacity: 1;
+}
+}
 .toast[data-v-7bde9a] {
+  animation: fade-in-data-v-7bde9a 1s;
   position: fixed;
   left: 50%;
   color: white;
