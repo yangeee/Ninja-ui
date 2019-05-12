@@ -21969,6 +21969,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 var _default = {
   name: 'NinjaToast',
   props: {
@@ -22057,33 +22059,37 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { ref: "toast", staticClass: "toast", class: _vm.toastClasses },
-    [
-      !_vm.enableHtml
-        ? _vm._t("default")
-        : _c("div", { domProps: { innerHTML: _vm._s(_vm.$slots.default[0]) } }),
-      _vm._v(" "),
-      _c("span", { ref: "line", staticClass: "line" }),
-      _vm._v(" "),
-      _vm.closeButton
-        ? _c(
-            "span",
-            {
-              staticClass: "close",
-              on: {
-                click: function($event) {
-                  return _vm.onClickClose()
+  return _c("div", { staticClass: "wrapper", class: _vm.toastClasses }, [
+    _c(
+      "div",
+      { ref: "toast", staticClass: "toast" },
+      [
+        !_vm.enableHtml
+          ? _vm._t("default")
+          : _c("div", {
+              domProps: { innerHTML: _vm._s(_vm.$slots.default[0]) }
+            }),
+        _vm._v(" "),
+        _c("span", { ref: "line", staticClass: "line" }),
+        _vm._v(" "),
+        _vm.closeButton
+          ? _c(
+              "span",
+              {
+                staticClass: "close",
+                on: {
+                  click: function($event) {
+                    return _vm.onClickClose()
+                  }
                 }
-              }
-            },
-            [_vm._v(_vm._s(_vm.closeButton.text))]
-          )
-        : _vm._e()
-    ],
-    2
-  )
+              },
+              [_vm._v(_vm._s(_vm.closeButton.text))]
+            )
+          : _vm._e()
+      ],
+      2
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -22225,11 +22231,20 @@ new _vue.default({
     };
   },
   methods: {
-    showToast: function showToast() {
-      this.$toast("<p>我是消息</p>", {
+    showToast: function showToast(position) {
+      this.$toast('<p>我是消息</p>', {
         enableHtml: true,
-        position: 'middle'
+        position: position
       });
+    },
+    showToastTop: function showToastTop() {
+      this.showToast('top');
+    },
+    showToastMiddle: function showToastMiddle() {
+      this.showToast('middle');
+    },
+    showToastBottom: function showToastBottom() {
+      this.showToast('bottom');
     },
     inputChange: function inputChange() {}
   },

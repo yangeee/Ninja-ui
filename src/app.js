@@ -34,19 +34,26 @@ new Vue({
   data() {
     return {
       loading: false,
-      message: '杨艺',
+      message: '杨艺'
     }
   },
   methods: {
-    showToast(){
-        this.$toast("<p>我是消息</p>", {
-            enableHtml: true,
-            position: 'middle'
-        }) 
+    showToast(position) {
+      this.$toast('<p>我是消息</p>', {
+        enableHtml: true,
+        position
+      })
+    },
+    showToastTop() {
+      this.showToast('top')
+    },
+    showToastMiddle() {
+      this.showToast('middle')
+    },
+    showToastBottom() {
+      this.showToast('bottom')
     },
     inputChange() {}
   },
-  created() {
-        
-  }
+  created() {}
 })
