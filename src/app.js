@@ -40,7 +40,8 @@ new Vue({
   methods: {
     showToast(){
         this.$toast("<p>我是消息</p>", {
-            enableHtml: true
+            enableHtml: true,
+            position: 'middle'
         }) 
     },
     inputChange() {}

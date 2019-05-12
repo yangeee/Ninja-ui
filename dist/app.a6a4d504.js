@@ -21324,7 +21324,7 @@ var _default = {
     align: {
       type: String,
       validator: function validator(value) {
-        return ['left', 'right', 'center'].includes(value);
+        return ['left', 'right', 'center'].indexOf(value) >= 0;
       }
     }
   },
@@ -21956,6 +21956,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -21989,10 +21992,22 @@ var _default = {
     enableHtml: {
       type: Boolean,
       default: false
+    },
+    position: {
+      type: String,
+      default: 'top',
+      validator: function validator(value) {
+        return ['top', 'bottom', 'middle'].indexOf(value) >= 0;
+      }
     }
   },
   data: function data() {
     return {};
+  },
+  computed: {
+    toastClasses: function toastClasses() {
+      return _defineProperty({}, "position-".concat(this.position), true);
+    }
   },
   mounted: function mounted() {
     this.updateStyles();
@@ -22043,7 +22058,7 @@ exports.default = _default;
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { ref: "toast", staticClass: "toast" },
+    { ref: "toast", staticClass: "toast", class: _vm.toastClasses },
     [
       !_vm.enableHtml
         ? _vm._t("default")
@@ -22189,7 +22204,8 @@ new _vue.default({
   methods: {
     showToast: function showToast() {
       this.$toast("<p>我是消息</p>", {
-        enableHtml: true
+        enableHtml: true,
+        position: 'middle'
       });
     },
     inputChange: function inputChange() {}
@@ -22224,7 +22240,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34689" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40411" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
