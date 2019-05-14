@@ -16,12 +16,12 @@ export default {
   name: 'NinjaToast',
   props: {
     autoClose: {
-      type: Boolean,
-      default: true
-    },
-    autoCloseDelay: {
-      type: Number,
-      default: 55
+      type: [Boolean, Number],
+      default: 3,
+      validator(value){
+        console.log(value)
+        return value === false || typeof value === 'number'
+      }
     },
     closeButton: {
       type: Object,
@@ -65,10 +65,11 @@ export default {
       })
     },
     execAutoClose() {
+      console.log('11111')
       if (this.autoClose) {
         setTimeout(() => {
           this.close()
-        }, this.autoCloseDelay * 1000);
+        }, this.autoClose * 1000);
       }
     },
     close() {

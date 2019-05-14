@@ -21975,12 +21975,12 @@ var _default = {
   name: 'NinjaToast',
   props: {
     autoClose: {
-      type: Boolean,
-      default: true
-    },
-    autoCloseDelay: {
-      type: Number,
-      default: 55
+      type: [Boolean, Number],
+      default: 3,
+      validator: function validator(value) {
+        console.log(value);
+        return value === false || typeof value === 'number';
+      }
     },
     closeButton: {
       type: Object,
@@ -22026,10 +22026,12 @@ var _default = {
     execAutoClose: function execAutoClose() {
       var _this2 = this;
 
+      console.log('11111');
+
       if (this.autoClose) {
         setTimeout(function () {
           _this2.close();
-        }, this.autoCloseDelay * 1000);
+        }, this.autoClose * 1000);
       }
     },
     close: function close() {
@@ -22231,20 +22233,21 @@ new _vue.default({
     };
   },
   methods: {
-    showToast: function showToast(position) {
+    showToast: function showToast(position, time) {
       this.$toast('<p>我是消息</p>', {
         enableHtml: true,
-        position: position
+        position: position,
+        autoClose: time
       });
     },
     showToastTop: function showToastTop() {
-      this.showToast('top');
+      this.showToast('top', 5);
     },
     showToastMiddle: function showToastMiddle() {
-      this.showToast('middle');
+      this.showToast('middle', 10);
     },
     showToastBottom: function showToastBottom() {
-      this.showToast('bottom');
+      this.showToast('bottom', false);
     },
     inputChange: function inputChange() {}
   },
@@ -22278,7 +22281,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40411" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46681" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

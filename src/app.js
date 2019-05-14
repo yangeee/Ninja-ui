@@ -38,20 +38,21 @@ new Vue({
     }
   },
   methods: {
-    showToast(position) {
+    showToast(position, time) {
       this.$toast('<p>我是消息</p>', {
-        enableHtml: true,
-        position
+          enableHtml: true,
+          position,
+          autoClose: time
       })
     },
     showToastTop() {
-      this.showToast('top')
+      this.showToast('top', 5)
     },
     showToastMiddle() {
-      this.showToast('middle')
+      this.showToast('middle', 10)
     },
     showToastBottom() {
-      this.showToast('bottom')
+      this.showToast('bottom', false)
     },
     inputChange() {}
   },
