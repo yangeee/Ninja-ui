@@ -65,7 +65,6 @@ export default {
       })
     },
     execAutoClose() {
-      console.log('11111')
       if (this.autoClose) {
         setTimeout(() => {
           this.close()

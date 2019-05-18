@@ -22026,8 +22026,6 @@ var _default = {
     execAutoClose: function execAutoClose() {
       var _this2 = this;
 
-      console.log('11111');
-
       if (this.autoClose) {
         setTimeout(function () {
           _this2.close();
@@ -22281,7 +22279,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46681" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39883" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

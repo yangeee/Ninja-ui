@@ -8619,8 +8619,6 @@ var _default = {
     execAutoClose: function execAutoClose() {
       var _this2 = this;
 
-      console.log('11111');
-
       if (this.autoClose) {
         setTimeout(function () {
           _this2.close();
@@ -8695,7 +8693,7 @@ describe('Toast', function () {
         done();
       }, 1500);
     });
-    it('接受 closeButton', function () {
+    it('接受 closeButton', function (done) {
       var callback = sinon.fake();
 
       var Construtor = _vue.default.extend(_toast.default);
@@ -8710,8 +8708,11 @@ describe('Toast', function () {
       }).$mount();
       var closeButton = vm.$el.querySelector('.close');
       expect(closeButton.textContent.trim()).to.eq('关闭吧');
-      closeButton.click();
-      expect(callback).to.have.been.called;
+      setTimeout(function () {
+        closeButton.click();
+        expect(callback).to.have.been.called;
+        done();
+      }, 200);
     });
     it('接受 enableHtml', function () {
       var Construtor = _vue.default.extend(_toast.default);
