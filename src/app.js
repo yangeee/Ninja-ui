@@ -12,6 +12,12 @@ import Sider from './sider.vue'
 import Content from './content.vue'
 import Toast from './toast.vue'
 import plugin from './plugin'
+import Tabs from './tabs.vue'
+import TabsHead from './tabs-head.vue'
+import TabsBody from './tabs-body.vue'
+import TabsPane from './tabs-pane.vue'
+import TabsItem from './tabs-item.vue'
+
 
 Vue.component('n-icon', Icon)
 Vue.use(plugin)
@@ -29,12 +35,19 @@ new Vue({
     'n-layout': Layout,
     'n-footer': Footer,
     'n-content': Content,
-    'n-toast': Toast
+    'n-toast': Toast,
+    'n-tabs': Tabs,
+    'n-tabs-head': TabsHead,
+    'n-tabs-body': TabsBody,
+    'n-tabs-item': TabsItem,
+    'n-tabs-pane': TabsPane,
+
   },
   data() {
     return {
       loading: false,
-      message: '杨艺'
+      message: '杨艺',
+      selectedTab: 'sports'
     }
   },
   methods: {

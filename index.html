@@ -60,7 +60,34 @@
         <button @click="showToastTop">top</button>
         <button @click="showToastMiddle">middle</button>
         <button @click="showToastBottom">bottom</button>
-
+        
+        <n-tabs>
+            <n-tabs-head :selected.sync="selectedTab" direction="">
+                <template name="actions">
+                    设置
+                </template>
+                <n-tabs-item name="woman">
+                    美女
+                </n-tabs-item>
+                <n-tabs-item name="finance">
+                    财经
+                </n-tabs-item>
+                <n-tabs-item name="sports">
+                    体育
+                </n-tabs-item>
+            </n-tabs-head>
+            <n-tabs-body>
+                <n-tabs-pane name="woman">
+                    美女相关资讯
+                </n-tabs-pane>
+                <n-tabs-pane name="finance">
+                    财经相关资讯
+                </n-tabs-pane>
+                <n-tabs-pane name="sports">
+                    体育相关资讯
+                </n-tabs-pane>
+            </n-tabs-body>
+        </n-tabs>
     </div>
 
 
