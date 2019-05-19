@@ -22179,6 +22179,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+var _vue = _interopRequireDefault(require("vue/dist/vue"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 //
 //
 //
@@ -22199,6 +22204,16 @@ var _default = {
         return ['horizontal', 'vertical'].indexOf(value) >= 0;
       }
     }
+  },
+  data: function data() {
+    return {
+      eventBus: new _vue.default()
+    };
+  },
+  provide: function provide() {
+    return {
+      eventBus: this.eventBus
+    };
   },
   created: function created() {}
 };
@@ -22250,7 +22265,7 @@ render._withStripped = true
       
       }
     })();
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"src/tabs-head.vue":[function(require,module,exports) {
+},{"vue/dist/vue":"node_modules/vue/dist/vue.js","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"src/tabs-head.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22266,7 +22281,9 @@ exports.default = void 0;
 //
 //
 var _default = {
-  name: 'NinjaTabsHead'
+  name: 'NinjaTabsHead',
+  inject: ['eventBus'],
+  created: function created() {}
 };
 exports.default = _default;
         var $231d9a = exports.default || module.exports;
@@ -22466,7 +22483,28 @@ exports.default = void 0;
 //
 //
 var _default = {
-  name: 'NinjaTabsItem'
+  name: 'NinjaTabsItem',
+  inject: ['eventBus'],
+  props: {
+    name: {
+      type: String || Number,
+      required: true
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    }
+  },
+  created: function created() {
+    this.eventBus.$on('update:selected', function (value) {
+      console.log(value);
+    });
+  },
+  methods: {
+    xxx: function xxx() {
+      this.eventBus.$emit('update:selected', this.name);
+    }
+  }
 };
 exports.default = _default;
         var $5feb7c = exports.default || module.exports;
@@ -22481,7 +22519,12 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "tabs-item" }, [_vm._t("default")], 2)
+  return _c(
+    "div",
+    { staticClass: "tabs-item", on: { click: _vm.xxx } },
+    [_vm._t("default")],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

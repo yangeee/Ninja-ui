@@ -6,6 +6,7 @@
 
 
 <script>
+import Vue from "vue/dist/vue";
 export default {
   name: 'NinjaTabs',
   props: {
@@ -20,8 +21,17 @@ export default {
       }
     }
   },
+  data() {
+    return {
+      eventBus: new Vue()
+    }
+  },
+  provide() {
+    return {
+      eventBus: this.eventBus
+    }
+  },
   created() {
-
   }
 }
 </script>

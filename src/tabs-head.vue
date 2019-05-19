@@ -9,6 +9,9 @@
 <script>
 export default {
   name: 'NinjaTabsHead',
+  inject: ['eventBus'],
+  created(){
+  }
 }
 </script>
 
