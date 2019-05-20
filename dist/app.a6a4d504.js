@@ -22207,7 +22207,8 @@ var _default = {
   },
   data: function data() {
     return {
-      eventBus: new _vue.default()
+      eventBus: new _vue.default(),
+      selected_item: this.selected
     };
   },
   provide: function provide() {
@@ -22215,9 +22216,25 @@ var _default = {
       eventBus: this.eventBus
     };
   },
-  created: function created() {},
+  created: function created() {
+    var _this = this;
+
+    this.eventBus.$on('update:selected', function (name, item) {
+      _this.selected_item = name;
+    });
+  },
   mounted: function mounted() {
-    this.eventBus.$emit('update:selected', this.name);
+    var _this2 = this;
+
+    this.$children.forEach(function (vm) {
+      if (vm.$options.name === 'NinjaTabsHead') {
+        vm.$children.forEach(function (item) {
+          if (item.$options.name === 'NinjaTabsItem' && item.name === _this2.selected_item) {
+            _this2.eventBus.$emit('update:selected', _this2.name, item);
+          }
+        });
+      }
+    });
   }
 };
 exports.default = _default;
@@ -22285,10 +22302,15 @@ exports.default = void 0;
 //
 //
 //
+//
 var _default = {
   name: 'NinjaTabsHead',
   inject: ['eventBus'],
-  created: function created() {}
+  created: function created() {
+    this.eventBus.$on('update:selected', function (name, item) {
+      console.log(item.$el);
+    });
+  }
 };
 exports.default = _default;
         var $231d9a = exports.default || module.exports;
@@ -22308,6 +22330,8 @@ exports.default = _default;
     { staticClass: "tabs-head" },
     [
       _vm._t("default"),
+      _vm._v(" "),
+      _c("div", { ref: "line", staticClass: "line" }),
       _vm._v(" "),
       _c("div", { staticClass: "actions-wrapper" }, [_vm._t("actions")], 2)
     ],
@@ -22552,7 +22576,7 @@ var _default = {
   },
   methods: {
     xxx: function xxx() {
-      this.eventBus.$emit('update:selected', this.name);
+      this.eventBus.$emit('update:selected', this.name, this);
     }
   },
   computed: {

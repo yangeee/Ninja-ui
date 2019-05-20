@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     xxx() {
-      this.eventBus.$emit('update:selected', this.name)
+      this.eventBus.$emit('update:selected', this.name, this)
     }
   },
   computed: {
@@ -47,6 +47,7 @@ export default {
 
 
 <style scoped lang="scss">
+$blue: blue;
 .tabs-item {
   flex-shrink: 0;
   text-align: center;
@@ -57,7 +58,7 @@ export default {
   display: flex;
   align-items: center;
   &.item_active {
-    background: red;
+    color: $blue;
   }
 }
 </style>

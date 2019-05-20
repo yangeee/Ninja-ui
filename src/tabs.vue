@@ -23,7 +23,8 @@ export default {
   },
   data() {
     return {
-      eventBus: new Vue()
+      eventBus: new Vue(),
+      selected_item: this.selected
     }
   },
   provide() {
@@ -32,9 +33,20 @@ export default {
     }
   },
   created() {
+    this.eventBus.$on('update:selected', (name, item)=>{
+      this.selected_item = name
+    })
   },
-  mounted(){
-      this.eventBus.$emit('update:selected', this.name)
+  mounted() {
+    this.$children.forEach((vm) => {
+      if (vm.$options.name === 'NinjaTabsHead') {
+        vm.$children.forEach((item) => {
+          if (item.$options.name === 'NinjaTabsItem' && item.name === this.selected_item) {
+            this.eventBus.$emit('update:selected', this.name, item)
+          }
+        })
+      }
+    })
   }
 }
 </script>

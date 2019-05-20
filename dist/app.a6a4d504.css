@@ -952,6 +952,11 @@
   align-items: center;
   border: 1px solid red;
 }
+.tabs-head > .lines[data-v-231d9a] {
+  position: absolute;
+  bottom: 0;
+  border-bottom: 1px solid blue;
+}
 .tabs-head > .actions-wrapper[data-v-231d9a] {
   margin-left: auto;
 }
@@ -969,5 +974,5 @@
   align-items: center;
 }
 .tabs-item.item_active[data-v-5feb7c] {
-  background: red;
+  color: blue;
 }
