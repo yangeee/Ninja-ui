@@ -22215,7 +22215,10 @@ var _default = {
       eventBus: this.eventBus
     };
   },
-  created: function created() {}
+  created: function created() {},
+  mounted: function mounted() {
+    this.eventBus.$emit('update:selected', this.name);
+  }
 };
 exports.default = _default;
         var $87f9c0 = exports.default || module.exports;
@@ -22280,6 +22283,8 @@ exports.default = void 0;
 //
 //
 //
+//
+//
 var _default = {
   name: 'NinjaTabsHead',
   inject: ['eventBus'],
@@ -22301,7 +22306,11 @@ exports.default = _default;
   return _c(
     "div",
     { staticClass: "tabs-head" },
-    [_vm._t("default"), _vm._v(" "), _vm._t("actions")],
+    [
+      _vm._t("default"),
+      _vm._v(" "),
+      _c("div", { staticClass: "actions-wrapper" }, [_vm._t("actions")], 2)
+    ],
     2
   )
 }
@@ -22418,7 +22427,33 @@ exports.default = void 0;
 //
 //
 var _default = {
-  name: 'NinjaTabsPane'
+  name: 'NinjaTabsPane',
+  inject: ["eventBus"],
+  props: {
+    name: {
+      type: Number | String,
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      tabs_active: false
+    };
+  },
+  computed: {
+    classes: function classes() {
+      return {
+        tabs_active: this.tabs_active
+      };
+    }
+  },
+  created: function created() {
+    var _this = this;
+
+    this.eventBus.$on('update:selected', function (name) {
+      return _this.tabs_active = name === _this.name;
+    });
+  }
 };
 exports.default = _default;
         var $89dbaa = exports.default || module.exports;
@@ -22433,7 +22468,14 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "tabs-pane" }, [_vm._t("default")], 2)
+  return _vm.tabs_active
+    ? _c(
+        "div",
+        { staticClass: "tabs-pane", class: _vm.classes },
+        [_vm._t("default")],
+        2
+      )
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -22485,6 +22527,12 @@ exports.default = void 0;
 var _default = {
   name: 'NinjaTabsItem',
   inject: ['eventBus'],
+  data: function data() {
+    return {
+      active: 'sports',
+      item_active: true
+    };
+  },
   props: {
     name: {
       type: String || Number,
@@ -22496,13 +22544,22 @@ var _default = {
     }
   },
   created: function created() {
-    this.eventBus.$on('update:selected', function (value) {
-      console.log(value);
+    var _this = this;
+
+    this.eventBus.$on('update:selected', function (name) {
+      return _this.item_active = name === _this.name;
     });
   },
   methods: {
     xxx: function xxx() {
       this.eventBus.$emit('update:selected', this.name);
+    }
+  },
+  computed: {
+    classes: function classes() {
+      return {
+        item_active: this.item_active
+      };
     }
   }
 };
@@ -22521,7 +22578,7 @@ exports.default = _default;
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "tabs-item", on: { click: _vm.xxx } },
+    { staticClass: "tabs-item", class: _vm.classes, on: { click: _vm.xxx } },
     [_vm._t("default")],
     2
   )
@@ -22682,7 +22739,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44281" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34225" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

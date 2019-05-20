@@ -1,7 +1,7 @@
 <template>
-    <div class="tabs-item" @click='xxx'>
-        <slot></slot>
-    </div>
+  <div class="tabs-item" @click="xxx" :class="classes">
+    <slot></slot>
+  </div>
 </template>
 
 
@@ -9,32 +9,50 @@
 export default {
   name: 'NinjaTabsItem',
   inject: ['eventBus'],
-  props:{
-      name:{
-          type: String || Number,
-          required: true
-      },
-      disabled: {
-          type: Boolean,
-          default: false
-      }
+  data() {
+    return {
+      active: 'sports',
+      item_active: true
+    }
   },
-  created(){
-    this.eventBus.$on('update:selected', (value)=>{
-        console.log(value)
-    })  
+  props: {
+    name: {
+      type: String || Number,
+      required: true
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    }
   },
-  methods:{
-      xxx(){
-          this.eventBus.$emit('update:selected',this.name)
+  created() {
+    this.eventBus.$on('update:selected', (name) => {
+      return this.item_active = name === this.name
+    })
+  },
+  methods: {
+    xxx() {
+      this.eventBus.$emit('update:selected', this.name)
+    }
+  },
+  computed: {
+    classes() {
+      return {
+        item_active: this.item_active
       }
+    }
   }
 }
 </script>
 
 
 <style scoped lang="scss">
-    .tabs-item{
-        
-    }
+.tabs-item {
+  flex-shrink: 0;
+  width: 100px;
+  text-align: center;
+  &.item_active {
+    background: red;
+  }
+}
 </style>

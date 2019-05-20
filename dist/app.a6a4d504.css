@@ -945,3 +945,24 @@
 .close[data-v-7bde9a] {
   cursor: pointer;
 }
+.tabs-head[data-v-231d9a] {
+  display: flex;
+  height: 40px;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid red;
+}
+.tabs-head > .actions-wrapper[data-v-231d9a] {
+  margin-left: auto;
+}
+.tabs-pane.tabs_active[data-v-89dbaa] {
+  background: red;
+}
+.tabs-item[data-v-5feb7c] {
+  flex-shrink: 0;
+  width: 100px;
+  text-align: center;
+}
+.tabs-item.item_active[data-v-5feb7c] {
+  background: red;
+}

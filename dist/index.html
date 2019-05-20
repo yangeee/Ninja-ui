@@ -59,8 +59,8 @@
         
         <n-tabs :selected.sync="selectedTab">
             <n-tabs-head direction="">
-                <template name="actions">
-                    <button>设置</button>
+                <template v-slot:actions="">
+                    设置
                 </template>
                 <n-tabs-item name="woman">
                     美女
