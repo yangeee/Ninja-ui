@@ -960,8 +960,13 @@
 }
 .tabs-item[data-v-5feb7c] {
   flex-shrink: 0;
-  width: 100px;
   text-align: center;
+  padding: 0 1em;
+  border: 1px solid green;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 .tabs-item.item_active[data-v-5feb7c] {
   background: red;
