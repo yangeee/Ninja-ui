@@ -13,9 +13,17 @@
 export default {
   name: 'NinjaTabsHead',
   inject: ['eventBus'],
-  created() {
+  data(){
+    return{
+    }
+  },
+  mounted() {
     this.eventBus.$on('update:selected', (name, item) => {
-      console.log(item.$el)
+      this.x = true
+      let {width, height, top, left} = item.$el.getBoundingClientRect()
+      this.$refs.line.style.width = `${width}px`
+      this.$refs.line.style.left = `${left}px`
+
     })
   }
 }
@@ -30,11 +38,13 @@ $blue: blue;
   height: $tabs-height;
   justify-content: flex-start;
   align-items: center;
-  border: 1px solid red;
-  > .lines {
+  position: relative;
+  margin-bottom: 10px;
+  > .line {
     position: absolute;
     bottom: 0;
-    border-bottom: 1px solid $blue;
+    border-bottom: 2px solid $blue;
+    transition: all 300ms;
   }
   > .actions-wrapper {
     margin-left: auto;

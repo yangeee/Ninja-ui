@@ -52,7 +52,6 @@ $blue: blue;
   flex-shrink: 0;
   text-align: center;
   padding: 0 1em;
-  border: 1px solid green;
   height: 100%;
   cursor: pointer;
   display: flex;

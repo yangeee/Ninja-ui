@@ -22306,9 +22306,23 @@ exports.default = void 0;
 var _default = {
   name: 'NinjaTabsHead',
   inject: ['eventBus'],
-  created: function created() {
+  data: function data() {
+    return {};
+  },
+  mounted: function mounted() {
+    var _this = this;
+
     this.eventBus.$on('update:selected', function (name, item) {
-      console.log(item.$el);
+      _this.x = true;
+
+      var _item$$el$getBounding = item.$el.getBoundingClientRect(),
+          width = _item$$el$getBounding.width,
+          height = _item$$el$getBounding.height,
+          top = _item$$el$getBounding.top,
+          left = _item$$el$getBounding.left;
+
+      _this.$refs.line.style.width = "".concat(width, "px");
+      _this.$refs.line.style.left = "".concat(left, "px");
     });
   }
 };
@@ -22763,7 +22777,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35853" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45209" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -950,12 +950,14 @@
   height: 40px;
   justify-content: flex-start;
   align-items: center;
-  border: 1px solid red;
+  position: relative;
+  margin-bottom: 10px;
 }
-.tabs-head > .lines[data-v-231d9a] {
+.tabs-head > .line[data-v-231d9a] {
   position: absolute;
   bottom: 0;
-  border-bottom: 1px solid blue;
+  border-bottom: 2px solid blue;
+  transition: all 300ms;
 }
 .tabs-head > .actions-wrapper[data-v-231d9a] {
   margin-left: auto;
@@ -967,7 +969,6 @@
   flex-shrink: 0;
   text-align: center;
   padding: 0 1em;
-  border: 1px solid green;
   height: 100%;
   cursor: pointer;
   display: flex;
