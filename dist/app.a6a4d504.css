@@ -952,6 +952,7 @@
   align-items: center;
   position: relative;
   margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
 }
 .tabs-head > .line[data-v-231d9a] {
   position: absolute;
@@ -961,9 +962,9 @@
 }
 .tabs-head > .actions-wrapper[data-v-231d9a] {
   margin-left: auto;
-}
-.tabs-pane.tabs_active[data-v-89dbaa] {
-  background: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .tabs-item[data-v-5feb7c] {
   flex-shrink: 0;

@@ -33,6 +33,7 @@ export default {
 <style scoped lang="scss">
 $tabs-height: 40px;
 $blue: blue;
+$border-color: #ddd;
 .tabs-head {
   display: flex;
   height: $tabs-height;
@@ -40,6 +41,7 @@ $blue: blue;
   align-items: center;
   position: relative;
   margin-bottom: 10px;
+  border-bottom: 1px solid $border-color;
   > .line {
     position: absolute;
     bottom: 0;
@@ -48,6 +50,9 @@ $blue: blue;
   }
   > .actions-wrapper {
     margin-left: auto;
+    display:flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 </style>
