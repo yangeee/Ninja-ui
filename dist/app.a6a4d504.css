@@ -978,3 +978,6 @@
 .tabs-item.item_active[data-v-5feb7c] {
   color: blue;
 }
+.tabs-item.disabled[data-v-5feb7c] {
+  color: #aaa;
+}
