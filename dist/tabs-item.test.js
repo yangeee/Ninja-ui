@@ -12446,7 +12446,7 @@ describe('TabsItem', function () {
     var callback = sinon.fake();
     vm.$on('click', callback);
     vm.$el.click();
-    expect(callback).to.have.been.called;
+    expect(callback).to.have.not.been.called;
   });
 });
 },{"vue/dist/vue":"HbND","../src/tabs":"n6Xd","../src/tabs-head.vue":"Q07j","../src/tabs-body.vue":"Ydtc","../src/tabs-pane.vue":"vREI","../src/tabs-item.vue":"albi"}]},{},["QaTC"], null)

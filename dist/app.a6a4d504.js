@@ -22669,6 +22669,127 @@ render._withStripped = true
       
       }
     })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"src/popover.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: 'NinjaPopover',
+  data: function data() {
+    return {
+      visible: false
+    };
+  },
+  methods: {
+    xxx: function xxx() {
+      var _this = this;
+
+      this.visible = !this.visible;
+
+      if (this.visible === true) {
+        this.$nextTick(function () {
+          var eventHandler = function eventHandler() {
+            _this.visible = false;
+            document.removeEventListener('click', eventHandler);
+          };
+
+          document.addEventListener('click', eventHandler);
+        });
+      } else {}
+    }
+  }
+};
+exports.default = _default;
+        var $e384da = exports.default || module.exports;
+      
+      if (typeof $e384da === 'function') {
+        $e384da = $e384da.options;
+      }
+    
+        /* template */
+        Object.assign($e384da, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "popover",
+      on: {
+        click: function($event) {
+          $event.stopPropagation()
+          return _vm.xxx($event)
+        }
+      }
+    },
+    [
+      _c(
+        "div",
+        {
+          staticClass: "content-wrapper",
+          on: {
+            click: function($event) {
+              $event.stopPropagation()
+            }
+          }
+        },
+        [_vm.visible ? _vm._t("content") : _vm._e()],
+        2
+      ),
+      _vm._v(" "),
+      _vm._t("default")
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-e384da",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$e384da', $e384da);
+          } else {
+            api.reload('$e384da', $e384da);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
 },{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
@@ -22710,6 +22831,8 @@ var _tabsPane = _interopRequireDefault(require("./tabs-pane.vue"));
 
 var _tabsItem = _interopRequireDefault(require("./tabs-item.vue"));
 
+var _popover = _interopRequireDefault(require("./popover.vue"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _vue.default.component('n-icon', _icon.default);
@@ -22734,7 +22857,8 @@ new _vue.default({
     'n-tabs-head': _tabsHead.default,
     'n-tabs-body': _tabsBody.default,
     'n-tabs-item': _tabsItem.default,
-    'n-tabs-pane': _tabsPane.default
+    'n-tabs-pane': _tabsPane.default,
+    'n-popover': _popover.default
   },
   data: function data() {
     return {
@@ -22764,7 +22888,7 @@ new _vue.default({
   },
   created: function created() {}
 });
-},{"vue/dist/vue":"node_modules/vue/dist/vue.js","./button":"src/button.vue","./icon":"src/icon.vue","./n-button-group":"src/n-button-group.vue","./input.vue":"src/input.vue","./row.vue":"src/row.vue","./col.vue":"src/col.vue","./header.vue":"src/header.vue","./footer.vue":"src/footer.vue","./layout.vue":"src/layout.vue","./sider.vue":"src/sider.vue","./content.vue":"src/content.vue","./toast.vue":"src/toast.vue","./plugin":"src/plugin.js","./tabs.vue":"src/tabs.vue","./tabs-head.vue":"src/tabs-head.vue","./tabs-body.vue":"src/tabs-body.vue","./tabs-pane.vue":"src/tabs-pane.vue","./tabs-item.vue":"src/tabs-item.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"vue/dist/vue":"node_modules/vue/dist/vue.js","./button":"src/button.vue","./icon":"src/icon.vue","./n-button-group":"src/n-button-group.vue","./input.vue":"src/input.vue","./row.vue":"src/row.vue","./col.vue":"src/col.vue","./header.vue":"src/header.vue","./footer.vue":"src/footer.vue","./layout.vue":"src/layout.vue","./sider.vue":"src/sider.vue","./content.vue":"src/content.vue","./toast.vue":"src/toast.vue","./plugin":"src/plugin.js","./tabs.vue":"src/tabs.vue","./tabs-head.vue":"src/tabs-head.vue","./tabs-body.vue":"src/tabs-body.vue","./tabs-pane.vue":"src/tabs-pane.vue","./tabs-item.vue":"src/tabs-item.vue","./popover.vue":"src/popover.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

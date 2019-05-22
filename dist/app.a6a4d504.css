@@ -981,3 +981,7 @@
 .tabs-item.disabled[data-v-5feb7c] {
   color: #aaa;
 }
+.popover[data-v-e384da] {
+  display: inline-block;
+  vertical-align: top;
+}
