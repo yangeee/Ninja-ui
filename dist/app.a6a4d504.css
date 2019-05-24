@@ -984,4 +984,8 @@
 .popover[data-v-e384da] {
   display: inline-block;
   vertical-align: top;
+  margin: 200px;
+}
+.contentWrapper[data-v-e384da] {
+  position: absolute;
 }

@@ -1,10 +1,11 @@
 <template>
-  <div class="popover" @click.stop="xxx">
-    <div class="content-wrapper" @click.stop>
-    <slot name="content" v-if="visible"></slot>
+  <div class="popover" @click.stop="onClick" ref="popover">
+    <div ref="contentWrapper" class="content-wrapper" v-if="visible">
+      <slot name="content"></slot>
     </div>
-    <slot></slot>
-    
+    <span ref="triggerWrapper">
+      <slot></slot>
+    </span>
   </div>
 </template>
 
@@ -18,20 +19,38 @@ export default {
     }
   },
   methods: {
-    xxx() {
-      this.visible = !this.visible
-      if (this.visible === true){
-          this.$nextTick(()=>{
-              let eventHandler = ()=>{
-                  this.visible = false
-                  document.removeEventListener('click', eventHandler)
-              }
-              document.addEventListener('click', eventHandler)
-          })
-      }else{
-          
+    positionContent() {
+      document.body.appendChild(this.$refs.contentWrapper)
+      let { width, height, top, left } = this.$refs.triggerWrapper.getBoundingClientRect()
+      this.$refs.contentWrapper.style.left = left + window.scrollX + 'px'
+      this.$refs.contentWrapper.style.top = top + window.scrollY + 'px'
+    },
+    onClickDocument(e) {
+      if (this.$refs.popover &&
+        (this.$refs.contentWrapper === e.target)
+      ) { console.log(e.target);  return }
+      this.close()
+    },
+    close() {
+      this.visible = false
+      document.removeEventListener('click', this.onClickDocument)
+    },
+    open() {
+      this.visible = true
+      this.$nextTick(() => {
+        this.positionContent()
+        document.addEventListener('click', this.onClickDocument)
+      })
+    },
+    onClick(event) {
+      if (this.$refs.triggerWrapper.contains(event.target)) {
+        if (this.visible === true) {
+          this.close()
+        } else {
+          this.open()
+        }
       }
-      }
+    }
   }
 }
 </script>
@@ -41,5 +60,9 @@ export default {
 .popover {
   display: inline-block;
   vertical-align: top;
+  margin: 200px;
+}
+.contentWrapper {
+  position: absolute;
 }
 </style>
