@@ -22705,8 +22705,9 @@ var _default = {
           top = _this$$refs$triggerWr.top,
           left = _this$$refs$triggerWr.left;
 
+      console.log(top, left);
       this.$refs.contentWrapper.style.left = left + window.scrollX + 'px';
-      this.$refs.contentWrapper.style.top = top + window.scrollY + 'px';
+      this.$refs.contentWrapper.style.top = top - height + window.scrollY + 'px';
     },
     onClickDocument: function onClickDocument(e) {
       if (this.$refs.popover && this.$refs.contentWrapper === e.target) {
@@ -22939,7 +22940,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44251" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38629" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

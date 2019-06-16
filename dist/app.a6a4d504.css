@@ -985,7 +985,8 @@
   display: inline-block;
   vertical-align: top;
   margin: 200px;
+  position: relative;
 }
-.contentWrapper[data-v-e384da] {
+.content-wrapper[data-v-e384da] {
   position: absolute;
 }

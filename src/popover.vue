@@ -22,13 +22,14 @@ export default {
     positionContent() {
       document.body.appendChild(this.$refs.contentWrapper)
       let { width, height, top, left } = this.$refs.triggerWrapper.getBoundingClientRect()
+      console.log(top, left)
       this.$refs.contentWrapper.style.left = left + window.scrollX + 'px'
-      this.$refs.contentWrapper.style.top = top + window.scrollY + 'px'
+      this.$refs.contentWrapper.style.top = top - height + window.scrollY + 'px'
     },
     onClickDocument(e) {
       if (this.$refs.popover &&
         (this.$refs.contentWrapper === e.target)
-      ) { console.log(e.target);  return }
+      ) { console.log(e.target); return }
       this.close()
     },
     close() {
@@ -61,8 +62,9 @@ export default {
   display: inline-block;
   vertical-align: top;
   margin: 200px;
+  position: relative;
 }
-.contentWrapper {
+.content-wrapper {
   position: absolute;
 }
 </style>
