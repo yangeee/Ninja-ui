@@ -61,11 +61,17 @@
         <button @click="showToastMiddle">middle</button>
         <button @click="showToastBottom">bottom</button>
         
-        <n-popover>
+        <n-popover position="bottom">
             <template v-slot:content>
                 我是内容
             </template>
-            <button>点我</button>
+            <n-button>点我</n-button>
+        </n-popover>
+        <n-popover position="top">
+            <template v-slot:content>
+                我是内容
+            </template>
+            <n-button>点我</n-button>
         </n-popover>
     </div>
 

@@ -22688,8 +22688,22 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
 var _default = {
   name: 'NinjaPopover',
+  props: {
+    position: {
+      type: String,
+      default: 'top',
+      validator: function validator(value) {
+        return ['top', 'bottom', 'left', 'right'].indexOf(value) >= 0;
+      }
+    }
+  },
   data: function data() {
     return {
       visible: false
@@ -22706,12 +22720,17 @@ var _default = {
           left = _this$$refs$triggerWr.left;
 
       console.log(top, left);
-      this.$refs.contentWrapper.style.left = left + window.scrollX + 'px';
-      this.$refs.contentWrapper.style.top = top - height + window.scrollY + 'px';
+
+      if (this.position === 'top') {
+        this.$refs.contentWrapper.style.left = left + window.scrollX + 'px';
+        this.$refs.contentWrapper.style.top = top + window.scrollY + 'px';
+      } else if (this.position === 'bottom') {
+        this.$refs.contentWrapper.style.left = left + window.scrollX + 'px';
+        this.$refs.contentWrapper.style.top = top + window.scrollY + 'px';
+      }
     },
     onClickDocument: function onClickDocument(e) {
       if (this.$refs.popover && this.$refs.contentWrapper === e.target) {
-        console.log(e.target);
         return;
       }
 
@@ -22752,6 +22771,7 @@ exports.default = _default;
         /* template */
         Object.assign($e384da, (function () {
           var render = function() {
+  var _obj
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
@@ -22771,13 +22791,24 @@ exports.default = _default;
       _vm.visible
         ? _c(
             "div",
-            { ref: "contentWrapper", staticClass: "content-wrapper" },
+            {
+              ref: "contentWrapper",
+              staticClass: "content-wrapper",
+              class: ((_obj = {}),
+              (_obj["position-" + _vm.position] = true),
+              _obj)
+            },
             [_vm._t("content")],
             2
           )
         : _vm._e(),
       _vm._v(" "),
-      _c("span", { ref: "triggerWrapper" }, [_vm._t("default")], 2)
+      _c(
+        "span",
+        { ref: "triggerWrapper", staticStyle: { display: "inline-block" } },
+        [_vm._t("default")],
+        2
+      )
     ]
   )
 }
@@ -22940,7 +22971,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38629" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36127" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
