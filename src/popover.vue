@@ -36,13 +36,18 @@ export default {
     positionContent() {
       document.body.appendChild(this.$refs.contentWrapper)
       let { width, height, top, left } = this.$refs.triggerWrapper.getBoundingClientRect()
-      console.log(top, left)
       if (this.position === 'top') {
         this.$refs.contentWrapper.style.left = left + window.scrollX + 'px'
         this.$refs.contentWrapper.style.top = top + window.scrollY + 'px'
       } else if (this.position === 'bottom') {
         this.$refs.contentWrapper.style.left = left + window.scrollX + 'px'
         this.$refs.contentWrapper.style.top = top + window.scrollY + 'px'
+      } else if (this.position === 'left') {
+        let { height: height2 } = this.$refs.contentWrapper.getBoundingClientRect()
+        console.log(height2)
+        this.$refs.contentWrapper.style.left = left + window.scrollX + 'px'
+        this.$refs.contentWrapper.style.top = top + window.scrollY +
+          (height - height2) / 2 + 'px'
       }
     },
     onClickDocument(e) {
@@ -125,6 +130,24 @@ $border-raidus: 4px;
     &::after {
       border-bottom-color: white;
       bottom: calc(100% - 1px);
+    }
+  }
+  &.position-left {
+    margin-left: -10px;
+    transform: translateX(-100%);
+    &::before,
+    &::after {
+      transform: translateY(-50%);
+    }
+    &::before {
+      border-left-color: black;
+      top: 50%;
+      left: 100%;
+    }
+    &::after {
+      border-left-color: white;
+      top: 50%;
+      left: calc(100% - 1px);
     }
   }
 }

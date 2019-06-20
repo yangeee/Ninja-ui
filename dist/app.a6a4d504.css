@@ -1031,3 +1031,20 @@
   border-bottom-color: white;
   bottom: calc(100% - 1px);
 }
+.content-wrapper.position-left[data-v-e384da] {
+  margin-left: -10px;
+  transform: translateX(-100%);
+}
+.content-wrapper.position-left[data-v-e384da]::before, .content-wrapper.position-left[data-v-e384da]::after {
+  transform: translateY(-50%);
+}
+.content-wrapper.position-left[data-v-e384da]::before {
+  border-left-color: black;
+  top: 50%;
+  left: 100%;
+}
+.content-wrapper.position-left[data-v-e384da]::after {
+  border-left-color: white;
+  top: 50%;
+  left: calc(100% - 1px);
+}

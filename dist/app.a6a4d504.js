@@ -22719,14 +22719,19 @@ var _default = {
           top = _this$$refs$triggerWr.top,
           left = _this$$refs$triggerWr.left;
 
-      console.log(top, left);
-
       if (this.position === 'top') {
         this.$refs.contentWrapper.style.left = left + window.scrollX + 'px';
         this.$refs.contentWrapper.style.top = top + window.scrollY + 'px';
       } else if (this.position === 'bottom') {
         this.$refs.contentWrapper.style.left = left + window.scrollX + 'px';
         this.$refs.contentWrapper.style.top = top + window.scrollY + 'px';
+      } else if (this.position === 'left') {
+        var _this$$refs$contentWr = this.$refs.contentWrapper.getBoundingClientRect(),
+            height2 = _this$$refs$contentWr.height;
+
+        console.log(height2);
+        this.$refs.contentWrapper.style.left = left + window.scrollX + 'px';
+        this.$refs.contentWrapper.style.top = top + window.scrollY + (height - height2) / 2 + 'px';
       }
     },
     onClickDocument: function onClickDocument(e) {
