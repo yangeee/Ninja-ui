@@ -44,8 +44,12 @@ export default {
         this.$refs.contentWrapper.style.top = top + window.scrollY + 'px'
       } else if (this.position === 'left') {
         let { height: height2 } = this.$refs.contentWrapper.getBoundingClientRect()
-        console.log(height2)
         this.$refs.contentWrapper.style.left = left + window.scrollX + 'px'
+        this.$refs.contentWrapper.style.top = top + window.scrollY +
+          (height - height2) / 2 + 'px'
+      } else if (this.position === 'right') {
+        let { height: height2 } = this.$refs.contentWrapper.getBoundingClientRect()
+        this.$refs.contentWrapper.style.left = left + width  + window.scrollX + 'px'
         this.$refs.contentWrapper.style.top = top + window.scrollY +
           (height - height2) / 2 + 'px'
       }
@@ -106,7 +110,6 @@ $border-raidus: 4px;
     width: 0;
     height: 0;
     position: absolute;
-    left: 10px;
   }
   &.position-top {
     margin-top: -10px;
@@ -148,6 +151,22 @@ $border-raidus: 4px;
       border-left-color: white;
       top: 50%;
       left: calc(100% - 1px);
+    }
+  }
+  &.position-right {
+    margin-left: 10px;
+    &::before,
+    &::after {
+      transform: translateY(-50%);
+      top: 50%;
+    }
+    &::before {
+      border-right-color: black;
+      right: 100%;
+    }
+    &::after {
+      border-right-color: white;
+      right: calc(100% - 1px);
     }
   }
 }

@@ -1004,7 +1004,6 @@
   width: 0;
   height: 0;
   position: absolute;
-  left: 10px;
 }
 .content-wrapper.position-top[data-v-e384da] {
   margin-top: -10px;
@@ -1047,4 +1046,19 @@
   border-left-color: white;
   top: 50%;
   left: calc(100% - 1px);
+}
+.content-wrapper.position-right[data-v-e384da] {
+  margin-left: 10px;
+}
+.content-wrapper.position-right[data-v-e384da]::before, .content-wrapper.position-right[data-v-e384da]::after {
+  transform: translateY(-50%);
+  top: 50%;
+}
+.content-wrapper.position-right[data-v-e384da]::before {
+  border-right-color: black;
+  right: 100%;
+}
+.content-wrapper.position-right[data-v-e384da]::after {
+  border-right-color: white;
+  right: calc(100% - 1px);
 }
