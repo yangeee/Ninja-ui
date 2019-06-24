@@ -22711,6 +22711,9 @@ var _default = {
   },
   methods: {
     positionContent: function positionContent() {
+      var _this$$refs = this.$refs,
+          contentWrapper = _this$$refs.contentWrapper,
+          triggerWrapper = _this$$refs.triggerWrapper;
       document.body.appendChild(this.$refs.contentWrapper);
 
       var _this$$refs$triggerWr = this.$refs.triggerWrapper.getBoundingClientRect(),
@@ -22719,25 +22722,29 @@ var _default = {
           top = _this$$refs$triggerWr.top,
           left = _this$$refs$triggerWr.left;
 
-      if (this.position === 'top') {
-        this.$refs.contentWrapper.style.left = left + window.scrollX + 'px';
-        this.$refs.contentWrapper.style.top = top + window.scrollY + 'px';
-      } else if (this.position === 'bottom') {
-        this.$refs.contentWrapper.style.left = left + window.scrollX + 'px';
-        this.$refs.contentWrapper.style.top = top + window.scrollY + 'px';
-      } else if (this.position === 'left') {
-        var _this$$refs$contentWr = this.$refs.contentWrapper.getBoundingClientRect(),
-            height2 = _this$$refs$contentWr.height;
+      var _this$$refs$contentWr = this.$refs.contentWrapper.getBoundingClientRect(),
+          height2 = _this$$refs$contentWr.height;
 
-        this.$refs.contentWrapper.style.left = left + window.scrollX + 'px';
-        this.$refs.contentWrapper.style.top = top + window.scrollY + (height - height2) / 2 + 'px';
-      } else if (this.position === 'right') {
-        var _this$$refs$contentWr2 = this.$refs.contentWrapper.getBoundingClientRect(),
-            _height = _this$$refs$contentWr2.height;
-
-        this.$refs.contentWrapper.style.left = left + width + window.scrollX + 'px';
-        this.$refs.contentWrapper.style.top = top + window.scrollY + (height - _height) / 2 + 'px';
-      }
+      var positions = {
+        top: {
+          top: top + window.scrollY,
+          left: left + window.scrollX
+        },
+        bottom: {
+          top: top + window.scrollY,
+          left: left + window.scrollX
+        },
+        left: {
+          left: left + window.scrollX,
+          top: top + window.scrollY
+        },
+        right: {
+          top: top + window.scrollY + (height - height2) / 2,
+          left: left + width + window.scrollX
+        }
+      };
+      contentWrapper.style.left = positions[this.position].left + 'px';
+      contentWrapper.style.top = positions[this.position].top + 'px';
     },
     onClickDocument: function onClickDocument(e) {
       if (this.$refs.popover && this.$refs.contentWrapper === e.target) {
@@ -22981,7 +22988,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42311" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45977" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

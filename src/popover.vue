@@ -34,25 +34,31 @@ export default {
   },
   methods: {
     positionContent() {
+      const {contentWrapper, triggerWrapper} = this.$refs
       document.body.appendChild(this.$refs.contentWrapper)
-      let { width, height, top, left } = this.$refs.triggerWrapper.getBoundingClientRect()
-      if (this.position === 'top') {
-        this.$refs.contentWrapper.style.left = left + window.scrollX + 'px'
-        this.$refs.contentWrapper.style.top = top + window.scrollY + 'px'
-      } else if (this.position === 'bottom') {
-        this.$refs.contentWrapper.style.left = left + window.scrollX + 'px'
-        this.$refs.contentWrapper.style.top = top + window.scrollY + 'px'
-      } else if (this.position === 'left') {
-        let { height: height2 } = this.$refs.contentWrapper.getBoundingClientRect()
-        this.$refs.contentWrapper.style.left = left + window.scrollX + 'px'
-        this.$refs.contentWrapper.style.top = top + window.scrollY +
-          (height - height2) / 2 + 'px'
-      } else if (this.position === 'right') {
-        let { height: height2 } = this.$refs.contentWrapper.getBoundingClientRect()
-        this.$refs.contentWrapper.style.left = left + width  + window.scrollX + 'px'
-        this.$refs.contentWrapper.style.top = top + window.scrollY +
-          (height - height2) / 2 + 'px'
+      const { width, height, top, left } = this.$refs.triggerWrapper.getBoundingClientRect()
+      const { height: height2 } = this.$refs.contentWrapper.getBoundingClientRect()
+      let positions = {
+        top:{
+          top: top + window.scrollY,
+          left: left + window.scrollX
+        },
+        bottom:{
+          top:top + window.scrollY,
+          left: left + window.scrollX
+        },
+        left:{
+          left: left + window.scrollX,
+          top: top + window.scrollY
+        },
+        right:{
+          top: top + window.scrollY + (height - height2) / 2,
+          left: left + width + window.scrollX
+        }
       }
+      contentWrapper.style.left = positions[this.position].left + 'px'
+      contentWrapper.style.top = positions[this.position].top + 'px'
+     
     },
     onClickDocument(e) {
       if (this.$refs.popover &&
