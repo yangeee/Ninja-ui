@@ -1,5 +1,5 @@
 <template>
-  <div class="popover" @click.stop="onClick" ref="popover">
+  <div class="popover"  ref="popover">
     <div
       ref="contentWrapper"
       class="content-wrapper"
@@ -25,53 +25,93 @@ export default {
       validator(value) {
         return ['top', 'bottom', 'left', 'right'].indexOf(value) >= 0
       }
+    },
+    trigger: {
+      type: String,
+      default: 'click',
+      validator(value) {
+        return ['click', 'hover'].indexOf(value) >= 0
+      }
     }
   },
   data() {
     return {
-      visible: false
+      visible: false,
     }
   },
+  mounted() {
+    this.addPopoverListeners()
+  },
+  beforeDestroy() {
+    this.putBackContent()
+    this.removePopoverListeners()
+  },
   methods: {
+    addPopoverListeners() {
+      if (this.trigger === 'click') {
+        this.$refs.popover.addEventListener('click', this.onClick)
+      } else {
+        this.$refs.popover.addEventListener('mouseenter', this.open)
+        this.$refs.popover.addEventListener('mouseleave', this.close)
+      }
+    },
+    removePopoverListeners() {
+      if (this.trigger === 'click') {
+        this.$refs.popover.removeEventListener('click', this.onClick)
+      } else {
+        this.$refs.popover.removeEventListener('mouseenter', this.open)
+        this.$refs.popover.removeEventListener('mouseleave', this.close)
+      }
+    },
+    putBackContent() {
+      const { contentWrapper, popover } = this.$refs
+      if (!contentWrapper) { return }
+      popover.appendChild(contentWrapper)
+    },
     positionContent() {
-      const {contentWrapper, triggerWrapper} = this.$refs
-      document.body.appendChild(this.$refs.contentWrapper)
-      const { width, height, top, left } = this.$refs.triggerWrapper.getBoundingClientRect()
-      const { height: height2 } = this.$refs.contentWrapper.getBoundingClientRect()
+      const { contentWrapper, triggerWrapper } = this.$refs
+      document.body.appendChild(contentWrapper)
+      const { width, height, top, left } = triggerWrapper.getBoundingClientRect()
+      const { height: height2 } = contentWrapper.getBoundingClientRect()
       let positions = {
-        top:{
+        top: {
           top: top + window.scrollY,
           left: left + window.scrollX
         },
-        bottom:{
-          top:top + window.scrollY,
+        bottom: {
+          top: top + window.scrollY,
           left: left + window.scrollX
         },
-        left:{
+        left: {
           left: left + window.scrollX,
-          top: top + window.scrollY
+          top: top + window.scrollY + (height - height2) / 2
         },
-        right:{
+        right: {
           top: top + window.scrollY + (height - height2) / 2,
           left: left + width + window.scrollX
         }
       }
       contentWrapper.style.left = positions[this.position].left + 'px'
       contentWrapper.style.top = positions[this.position].top + 'px'
-     
+
     },
     onClickDocument(e) {
-      if (this.$refs.popover &&
-        (this.$refs.contentWrapper === e.target)
-      ) { return }
+       if (this.$refs.popover &&
+          (this.$refs.popover === e.target || this.$refs.popover.contains(e.target))
+        ) { return }
+        if (this.$refs.contentWrapper &&
+          (this.$refs.contentWrapper === e.target || this.$refs.contentWrapper.contains(e.target))
+        ) { return }
       this.close()
     },
     close() {
       this.visible = false
+      console.log(this.visible)
       document.removeEventListener('click', this.onClickDocument)
     },
     open() {
       this.visible = true
+      console.log(this.visible)
       this.$nextTick(() => {
         this.positionContent()
         document.addEventListener('click', this.onClickDocument)
@@ -82,6 +122,7 @@ export default {
         if (this.visible === true) {
           this.close()
         } else {
+          console.log('我被点击了')
           this.open()
         }
       }
