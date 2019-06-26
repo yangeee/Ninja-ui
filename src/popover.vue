@@ -1,5 +1,5 @@
 <template>
-  <div class="popover"  ref="popover">
+  <div class="popover" ref="popover">
     <div
       ref="contentWrapper"
       class="content-wrapper"
@@ -96,12 +96,12 @@ export default {
 
     },
     onClickDocument(e) {
-       if (this.$refs.popover &&
-          (this.$refs.popover === e.target || this.$refs.popover.contains(e.target))
-        ) { return }
-        if (this.$refs.contentWrapper &&
-          (this.$refs.contentWrapper === e.target || this.$refs.contentWrapper.contains(e.target))
-        ) { return }
+      if (this.$refs.popover &&
+        (this.$refs.popover === e.target || this.$refs.popover.contains(e.target))
+      ) { return }
+      if (this.$refs.contentWrapper &&
+        (this.$refs.contentWrapper === e.target || this.$refs.contentWrapper.contains(e.target))
+      ) { return }
       this.close()
     },
     close() {
@@ -163,9 +163,11 @@ $border-raidus: 4px;
     transform: translateY(-100%);
     &::before {
       border-top-color: black;
+      border-bottom: none;
       top: 100%;
     }
     &::after {
+      border-bottom: none;
       border-top-color: white;
       top: calc(100% - 1px);
     }
@@ -174,10 +176,12 @@ $border-raidus: 4px;
     margin-top: 5px; /* 这里要加上三角形的高度5px */
     transform: translateY(100%);
     &::before {
+      border-top: none;
       border-bottom-color: black;
       bottom: 100%;
     }
     &::after {
+      border-top:none;
       border-bottom-color: white;
       bottom: calc(100% - 1px);
     }
@@ -190,11 +194,13 @@ $border-raidus: 4px;
       transform: translateY(-50%);
     }
     &::before {
+      border-right: none;
       border-left-color: black;
       top: 50%;
       left: 100%;
     }
     &::after {
+      border-right: none;
       border-left-color: white;
       top: 50%;
       left: calc(100% - 1px);
@@ -204,10 +210,12 @@ $border-raidus: 4px;
     margin-left: 10px;
     &::before,
     &::after {
+      border-left: none;
       transform: translateY(-50%);
       top: 50%;
     }
     &::before {
+      border-left: none;
       border-right-color: black;
       right: 100%;
     }
