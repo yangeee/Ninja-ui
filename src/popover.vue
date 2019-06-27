@@ -37,6 +37,7 @@ export default {
   data() {
     return {
       visible: false,
+      contentHover: false
     }
   },
   mounted() {
@@ -47,12 +48,22 @@ export default {
     this.removePopoverListeners()
   },
   methods: {
+    addContentListeners(contentWrapper) {
+      contentWrapper.addEventListener('mouseenter', () => {
+        this.contentHover = true
+        this.open()
+      })
+      contentWrapper.addEventListener('mouseleave', () => {
+        this.contentHover = false
+        this.delayClose()
+      })
+    },
     addPopoverListeners() {
       if (this.trigger === 'click') {
         this.$refs.popover.addEventListener('click', this.onClick)
       } else {
         this.$refs.popover.addEventListener('mouseenter', this.open)
-        this.$refs.popover.addEventListener('mouseleave', this.close)
+        this.$refs.popover.addEventListener('mouseleave', this.delayClose)
       }
     },
     removePopoverListeners() {
@@ -60,7 +71,7 @@ export default {
         this.$refs.popover.removeEventListener('click', this.onClick)
       } else {
         this.$refs.popover.removeEventListener('mouseenter', this.open)
-        this.$refs.popover.removeEventListener('mouseleave', this.close)
+        this.$refs.popover.removeEventListener('mouseleave', this.delayClose)
       }
     },
     putBackContent() {
@@ -68,9 +79,15 @@ export default {
       if (!contentWrapper) { return }
       popover.appendChild(contentWrapper)
     },
+    delayClose() {
+      setTimeout(() => {
+        this.close()
+      }, 200);
+    },
     positionContent() {
       const { contentWrapper, triggerWrapper } = this.$refs
       document.body.appendChild(contentWrapper)
+      this.addContentListeners(contentWrapper)
       const { width, height, top, left } = triggerWrapper.getBoundingClientRect()
       const { height: height2 } = contentWrapper.getBoundingClientRect()
       let positions = {
@@ -105,13 +122,13 @@ export default {
       this.close()
     },
     close() {
+      if (this.contentHover === true) return
       this.visible = false
-      console.log(this.visible)
       document.removeEventListener('click', this.onClickDocument)
     },
     open() {
       this.visible = true
-      console.log(this.visible)
+      console.log('打开')
       this.$nextTick(() => {
         this.positionContent()
         document.addEventListener('click', this.onClickDocument)
@@ -181,7 +198,7 @@ $border-raidus: 4px;
       bottom: 100%;
     }
     &::after {
-      border-top:none;
+      border-top: none;
       border-bottom-color: white;
       bottom: calc(100% - 1px);
     }
