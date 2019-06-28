@@ -32,6 +32,10 @@ export default {
       validator(value) {
         return ['click', 'hover'].indexOf(value) >= 0
       }
+    },
+    enableHtml: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -46,32 +50,41 @@ export default {
   beforeDestroy() {
     this.putBackContent()
     this.removePopoverListeners()
+    this.removeContentListeners()
   },
   methods: {
+    contentOpen() {
+      this.contentHover = true
+      this.open()
+    },
+    contentClose() {
+      this.contentHover = false
+      this.delayClose()
+    },
     addContentListeners(contentWrapper) {
-      contentWrapper.addEventListener('mouseenter', () => {
-        this.contentHover = true
-        this.open()
-      })
-      contentWrapper.addEventListener('mouseleave', () => {
-        this.contentHover = false
-        this.delayClose()
-      })
+      contentWrapper.addEventListener('mouseenter', this.contentOpen)
+      contentWrapper.addEventListener('mouseleave', this.contentClose)
+    },
+    removeContentListeners() {
+      if (this.$refs.contentWrapper) {
+        this.$refs.contentWrapper.removeEventListener('mouseenter', this.contentOpen)
+        this.$refs.contentWrapper.removeEventListener('mouseleave', this.contentClose)
+      }
     },
     addPopoverListeners() {
       if (this.trigger === 'click') {
         this.$refs.popover.addEventListener('click', this.onClick)
       } else {
-        this.$refs.popover.addEventListener('mouseenter', this.open)
-        this.$refs.popover.addEventListener('mouseleave', this.delayClose)
+        this.$refs.popover.addEventListener('mouseenter', this.contentOpen)
+        this.$refs.popover.addEventListener('mouseleave', this.contentClose)
       }
     },
     removePopoverListeners() {
       if (this.trigger === 'click') {
         this.$refs.popover.removeEventListener('click', this.onClick)
       } else {
-        this.$refs.popover.removeEventListener('mouseenter', this.open)
-        this.$refs.popover.removeEventListener('mouseleave', this.delayClose)
+        this.$refs.popover.removeEventListener('mouseenter', this.contentOpen)
+        this.$refs.popover.removeEventListener('mouseleave', this.contentClose)
       }
     },
     putBackContent() {

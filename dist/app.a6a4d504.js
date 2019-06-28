@@ -22709,6 +22709,10 @@ var _default = {
       validator: function validator(value) {
         return ['click', 'hover'].indexOf(value) >= 0;
       }
+    },
+    enableHtml: {
+      type: Boolean,
+      default: false
     }
   },
   data: function data() {
@@ -22723,36 +22727,41 @@ var _default = {
   beforeDestroy: function beforeDestroy() {
     this.putBackContent();
     this.removePopoverListeners();
+    this.removeContentListeners();
   },
   methods: {
+    contentOpen: function contentOpen() {
+      this.contentHover = true;
+      this.open();
+    },
+    contentClose: function contentClose() {
+      this.contentHover = false;
+      this.delayClose();
+    },
     addContentListeners: function addContentListeners(contentWrapper) {
-      var _this = this;
-
-      contentWrapper.addEventListener('mouseenter', function () {
-        _this.contentHover = true;
-
-        _this.open();
-      });
-      contentWrapper.addEventListener('mouseleave', function () {
-        _this.contentHover = false;
-
-        _this.delayClose();
-      });
+      contentWrapper.addEventListener('mouseenter', this.contentOpen);
+      contentWrapper.addEventListener('mouseleave', this.contentClose);
+    },
+    removeContentListeners: function removeContentListeners() {
+      if (this.$refs.contentWrapper) {
+        this.$refs.contentWrapper.removeEventListener('mouseenter', this.contentOpen);
+        this.$refs.contentWrapper.removeEventListener('mouseleave', this.contentClose);
+      }
     },
     addPopoverListeners: function addPopoverListeners() {
       if (this.trigger === 'click') {
         this.$refs.popover.addEventListener('click', this.onClick);
       } else {
-        this.$refs.popover.addEventListener('mouseenter', this.open);
-        this.$refs.popover.addEventListener('mouseleave', this.delayClose);
+        this.$refs.popover.addEventListener('mouseenter', this.contentOpen);
+        this.$refs.popover.addEventListener('mouseleave', this.contentClose);
       }
     },
     removePopoverListeners: function removePopoverListeners() {
       if (this.trigger === 'click') {
         this.$refs.popover.removeEventListener('click', this.onClick);
       } else {
-        this.$refs.popover.removeEventListener('mouseenter', this.open);
-        this.$refs.popover.removeEventListener('mouseleave', this.delayClose);
+        this.$refs.popover.removeEventListener('mouseenter', this.contentOpen);
+        this.$refs.popover.removeEventListener('mouseleave', this.contentClose);
       }
     },
     putBackContent: function putBackContent() {
@@ -22767,10 +22776,10 @@ var _default = {
       popover.appendChild(contentWrapper);
     },
     delayClose: function delayClose() {
-      var _this2 = this;
+      var _this = this;
 
       setTimeout(function () {
-        _this2.close();
+        _this.close();
       }, 200);
     },
     positionContent: function positionContent() {
@@ -22827,14 +22836,14 @@ var _default = {
       document.removeEventListener('click', this.onClickDocument);
     },
     open: function open() {
-      var _this3 = this;
+      var _this2 = this;
 
       this.visible = true;
       console.log('打开');
       this.$nextTick(function () {
-        _this3.positionContent();
+        _this2.positionContent();
 
-        document.addEventListener('click', _this3.onClickDocument);
+        document.addEventListener('click', _this2.onClickDocument);
       });
     },
     onClick: function onClick(event) {
@@ -23046,7 +23055,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39679" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39221" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
