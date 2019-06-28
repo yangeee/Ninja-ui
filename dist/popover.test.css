@@ -1,0 +1,89 @@
+@charset "UTF-8";
+.popover[data-v-e384da] {
+  display: inline-block;
+  vertical-align: top;
+  margin: 200px;
+  position: relative;
+}
+.content-wrapper[data-v-e384da] {
+  position: absolute;
+  border: 1px solid #333;
+  border-radius: 4px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  padding: 0.5em 1em;
+  word-break: break-all;
+  max-width: 20em;
+}
+.content-wrapper[data-v-e384da]::before, .content-wrapper[data-v-e384da]::after {
+  content: "";
+  border: 10px solid transparent;
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+.content-wrapper.position-top[data-v-e384da] {
+  margin-top: -10px;
+  transform: translateY(-100%);
+}
+.content-wrapper.position-top[data-v-e384da]::before {
+  border-top-color: black;
+  border-bottom: none;
+  top: 100%;
+}
+.content-wrapper.position-top[data-v-e384da]::after {
+  border-bottom: none;
+  border-top-color: white;
+  top: calc(100% - 1px);
+}
+.content-wrapper.position-bottom[data-v-e384da] {
+  margin-top: 5px;
+  /* 这里要加上三角形的高度5px */
+  transform: translateY(100%);
+}
+.content-wrapper.position-bottom[data-v-e384da]::before {
+  border-top: none;
+  border-bottom-color: black;
+  bottom: 100%;
+}
+.content-wrapper.position-bottom[data-v-e384da]::after {
+  border-top: none;
+  border-bottom-color: white;
+  bottom: calc(100% - 1px);
+}
+.content-wrapper.position-left[data-v-e384da] {
+  margin-left: -10px;
+  transform: translateX(-100%);
+}
+.content-wrapper.position-left[data-v-e384da]::before, .content-wrapper.position-left[data-v-e384da]::after {
+  transform: translateY(-50%);
+}
+.content-wrapper.position-left[data-v-e384da]::before {
+  border-right: none;
+  border-left-color: black;
+  top: 50%;
+  left: 100%;
+}
+.content-wrapper.position-left[data-v-e384da]::after {
+  border-right: none;
+  border-left-color: white;
+  top: 50%;
+  left: calc(100% - 1px);
+}
+.content-wrapper.position-right[data-v-e384da] {
+  margin-left: 10px;
+}
+.content-wrapper.position-right[data-v-e384da]::before, .content-wrapper.position-right[data-v-e384da]::after {
+  border-left: none;
+  transform: translateY(-50%);
+  top: 50%;
+}
+.content-wrapper.position-right[data-v-e384da]::before {
+  border-left: none;
+  border-right-color: black;
+  right: 100%;
+}
+.content-wrapper.position-right[data-v-e384da]::after {
+  border-right-color: white;
+  right: calc(100% - 1px);
+}
