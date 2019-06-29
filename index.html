@@ -61,28 +61,19 @@
         <button @click="showToastMiddle">middle</button>
         <button @click="showToastBottom">bottom</button>
         
-        <n-popover position="right" >
+        <n-popover position="right">
             <template v-slot:content>
                 我是内容
             </template>
             <n-button>点我</n-button>
         </n-popover>
 
-        <n-popover position="top">
-            <template v-slot:content>
-                <a href="https://www.baidu.com">我我我我无呜呜呜呜</a>
-                我是内容
-            </template>
-            <n-button>点我</n-button>
-        </n-popover>
-
-        <n-popover position="left" trigger="hover">
-            <template v-slot:content>
-                
-                我是内容
-            </template>
-            <n-button>点我</n-button>
-        </n-popover>
+        <n-collapse>
+            <n-collapse-item title="体育111">内容111</n-collapse-item>
+            <n-collapse-item title="体育222">内容222</n-collapse-item>
+            <n-collapse-item title="体育333">内容333</n-collapse-item>
+        </n-collapse>
+       
     </div>
 
 

@@ -22787,7 +22787,7 @@ var _default = {
           contentWrapper = _this$$refs2.contentWrapper,
           triggerWrapper = _this$$refs2.triggerWrapper;
       document.body.appendChild(contentWrapper);
-      this.addContentListeners(contentWrapper);
+      if (this.trigger === 'hover') this.addContentListeners(contentWrapper);
 
       var _triggerWrapper$getBo = triggerWrapper.getBoundingClientRect(),
           width = _triggerWrapper$getBo.width,
@@ -22832,6 +22832,7 @@ var _default = {
     },
     close: function close() {
       if (this.contentHover === true) return;
+      console.log('关闭');
       this.visible = false;
       document.removeEventListener('click', this.onClickDocument);
     },
@@ -22929,6 +22930,167 @@ render._withStripped = true
       
       }
     })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"src/collapse.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: 'NinjaCollapseItem'
+};
+exports.default = _default;
+        var $dc3cad = exports.default || module.exports;
+      
+      if (typeof $dc3cad === 'function') {
+        $dc3cad = $dc3cad.options;
+      }
+    
+        /* template */
+        Object.assign($dc3cad, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "collapse" }, [_vm._t("default")], 2)
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-dc3cad",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$dc3cad', $dc3cad);
+          } else {
+            api.reload('$dc3cad', $dc3cad);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"src/collapse-item.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: 'NinjaCollpaseItem',
+  props: {
+    title: {
+      type: String,
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      open: true
+    };
+  }
+};
+exports.default = _default;
+        var $81aa99 = exports.default || module.exports;
+      
+      if (typeof $81aa99 === 'function') {
+        $81aa99 = $81aa99.options;
+      }
+    
+        /* template */
+        Object.assign($81aa99, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "collapseItem" }, [
+    _c(
+      "div",
+      {
+        staticClass: "title",
+        on: {
+          click: function($event) {
+            _vm.open = !_vm.open
+          }
+        }
+      },
+      [_vm._v(_vm._s(_vm.title))]
+    ),
+    _vm._v(" "),
+    _vm.open
+      ? _c("div", { staticClass: "content" }, [_vm._t("default")], 2)
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-81aa99",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$81aa99', $81aa99);
+          } else {
+            api.reload('$81aa99', $81aa99);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
 },{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
@@ -22972,6 +23134,10 @@ var _tabsItem = _interopRequireDefault(require("./tabs-item.vue"));
 
 var _popover = _interopRequireDefault(require("./popover.vue"));
 
+var _collapse = _interopRequireDefault(require("./collapse.vue"));
+
+var _collapseItem = _interopRequireDefault(require("./collapse-item.vue"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _vue.default.component('n-icon', _icon.default);
@@ -22997,7 +23163,9 @@ new _vue.default({
     'n-tabs-body': _tabsBody.default,
     'n-tabs-item': _tabsItem.default,
     'n-tabs-pane': _tabsPane.default,
-    'n-popover': _popover.default
+    'n-popover': _popover.default,
+    'n-collapse': _collapse.default,
+    'n-collapse-item': _collapseItem.default
   },
   data: function data() {
     return {
@@ -23027,7 +23195,7 @@ new _vue.default({
   },
   created: function created() {}
 });
-},{"vue/dist/vue":"node_modules/vue/dist/vue.js","./button":"src/button.vue","./icon":"src/icon.vue","./n-button-group":"src/n-button-group.vue","./input.vue":"src/input.vue","./row.vue":"src/row.vue","./col.vue":"src/col.vue","./header.vue":"src/header.vue","./footer.vue":"src/footer.vue","./layout.vue":"src/layout.vue","./sider.vue":"src/sider.vue","./content.vue":"src/content.vue","./toast.vue":"src/toast.vue","./plugin":"src/plugin.js","./tabs.vue":"src/tabs.vue","./tabs-head.vue":"src/tabs-head.vue","./tabs-body.vue":"src/tabs-body.vue","./tabs-pane.vue":"src/tabs-pane.vue","./tabs-item.vue":"src/tabs-item.vue","./popover.vue":"src/popover.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"vue/dist/vue":"node_modules/vue/dist/vue.js","./button":"src/button.vue","./icon":"src/icon.vue","./n-button-group":"src/n-button-group.vue","./input.vue":"src/input.vue","./row.vue":"src/row.vue","./col.vue":"src/col.vue","./header.vue":"src/header.vue","./footer.vue":"src/footer.vue","./layout.vue":"src/layout.vue","./sider.vue":"src/sider.vue","./content.vue":"src/content.vue","./toast.vue":"src/toast.vue","./plugin":"src/plugin.js","./tabs.vue":"src/tabs.vue","./tabs-head.vue":"src/tabs-head.vue","./tabs-body.vue":"src/tabs-body.vue","./tabs-pane.vue":"src/tabs-pane.vue","./tabs-item.vue":"src/tabs-item.vue","./popover.vue":"src/popover.vue","./collapse.vue":"src/collapse.vue","./collapse-item.vue":"src/collapse-item.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -23055,7 +23223,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39221" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35665" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

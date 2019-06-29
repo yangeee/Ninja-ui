@@ -18,6 +18,10 @@ import TabsBody from './tabs-body.vue'
 import TabsPane from './tabs-pane.vue'
 import TabsItem from './tabs-item.vue'
 import Popover from './popover.vue'
+import Collapse from './collapse.vue'
+import CollapseItem from './collapse-item.vue'
+
+
 
 
 Vue.component('n-icon', Icon)
@@ -42,7 +46,9 @@ new Vue({
     'n-tabs-body': TabsBody,
     'n-tabs-item': TabsItem,
     'n-tabs-pane': TabsPane,
-    'n-popover': Popover
+    'n-popover': Popover,
+    'n-collapse': Collapse,
+    'n-collapse-item': CollapseItem
   },
   data() {
     return {

@@ -62,8 +62,8 @@ export default {
       this.delayClose()
     },
     addContentListeners(contentWrapper) {
-      contentWrapper.addEventListener('mouseenter', this.contentOpen)
-      contentWrapper.addEventListener('mouseleave', this.contentClose)
+        contentWrapper.addEventListener('mouseenter', this.contentOpen)
+        contentWrapper.addEventListener('mouseleave', this.contentClose)
     },
     removeContentListeners() {
       if (this.$refs.contentWrapper) {
@@ -100,7 +100,7 @@ export default {
     positionContent() {
       const { contentWrapper, triggerWrapper } = this.$refs
       document.body.appendChild(contentWrapper)
-      this.addContentListeners(contentWrapper)
+      if (this.trigger === 'hover') this.addContentListeners(contentWrapper)
       const { width, height, top, left } = triggerWrapper.getBoundingClientRect()
       const { height: height2 } = contentWrapper.getBoundingClientRect()
       let positions = {
@@ -136,6 +136,7 @@ export default {
     },
     close() {
       if (this.contentHover === true) return
+      console.log('关闭')
       this.visible = false
       document.removeEventListener('click', this.onClickDocument)
     },
@@ -168,7 +169,6 @@ $border-raidus: 4px;
 .popover {
   display: inline-block;
   vertical-align: top;
-  margin: 200px;
   position: relative;
 }
 .content-wrapper {
