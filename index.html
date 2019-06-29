@@ -68,10 +68,10 @@
             <n-button>点我</n-button>
         </n-popover>
 
-        <n-collapse>
-            <n-collapse-item title="体育111">内容111</n-collapse-item>
-            <n-collapse-item title="体育222">内容222</n-collapse-item>
-            <n-collapse-item title="体育333">内容333</n-collapse-item>
+        <n-collapse :selected.sync="selectedTab" >
+            <n-collapse-item title="体育111" name="1">内容111</n-collapse-item>
+            <n-collapse-item title="体育222" name="2">内容222</n-collapse-item>
+            <n-collapse-item title="体育333" name="3">内容333</n-collapse-item>
         </n-collapse>
        
     </div>

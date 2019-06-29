@@ -54,7 +54,7 @@ new Vue({
     return {
       loading: false,
       message: '杨艺',
-      selectedTab: 'sports'
+      selectedTab: ['2']
     }
   },
   methods: {
