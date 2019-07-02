@@ -1,4 +1,5 @@
 module.exports = {
+  base:'Ninja-ui',
   title: '',
   description: '一个简单、易用的UI库',
   themeConfig: {
