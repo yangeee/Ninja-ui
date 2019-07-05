@@ -1,10 +1,8 @@
 ---
-title: 'Button - 按钮'
+title: 'Toast'
 ---
 
-## Button 按钮 ##
-基础用法：
-
+我就是帅气的按钮: 
 <clientOnly>
 <button-demos></button-demos>
 </clientOnly>

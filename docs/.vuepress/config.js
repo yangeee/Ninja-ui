@@ -1,6 +1,6 @@
 module.exports = {
   base:'/Ninja-ui/',
-  title: '',
+  title: 'Ninja-UI',
   description: '一个简单、易用的UI库',
   themeConfig: {
     nav: [
@@ -13,8 +13,15 @@ module.exports = {
       '/get-started/',
       {
         title: '组件',
-        collapsable: true,
-        children: ['/components/button']
+        collapsable: false,
+        children: [
+          '/components/button',
+          '/components/tabs',
+          '/components/layout',
+          '/components/grid',
+          '/components/toast',
+          '/components/popover',
+        ]
       }
     ]
   }

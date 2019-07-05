@@ -47,8 +47,9 @@ $button-bg: white;
 $border-radius: 4px;
 $button-active-bg: #eee;
 $color: #333;
-$border-color: #999;
-$border-color-hover: #666;
+$border-color: rgb(200, 200, 200);
+$border-color-hover: rgba(66, 160, 254, 0.3);
+$font-color-hover: #409eff;
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -57,6 +58,7 @@ $border-color-hover: #666;
     transform: rotate(360deg);
   }
 }
+
 .loading {
   animation: spin 2s infinite linear;
 }
@@ -71,13 +73,21 @@ $border-color-hover: #666;
   justify-content: center;
   align-items: center;
   vertical-align: middle;
+  cursor: pointer;
+  box-sizing: border-box;
+  outline: none;
   &:hover {
     border-color: $border-color-hover;
+    color: $font-color-hover;
   }
-  &:active {
-    background-color: $button-active-bg;
+  &:focus {
+    color: #409eff;
+    border-color: #c6e2ff;
+    background-color: #ecf5ff;
   }
-  &:foucs {
+   &:active {
+    color: #3a8ee6;
+    border-color: #3a8ee6;
     outline: none;
   }
   > .icon {
