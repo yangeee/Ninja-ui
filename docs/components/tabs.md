@@ -2,7 +2,7 @@
 title: 'Tabs - 标签'
 ---
 
-我就是帅气的按钮: 
+示例: 
 <clientOnly>
-<button-demos></button-demos>
+<tabs-demos></tabs-demos>
 </clientOnly>
