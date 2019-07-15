@@ -22254,7 +22254,7 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "tabs" }, [_vm._t("default")], 2)
+  return _c("div", { ref: "tabs", staticClass: "tabs" }, [_vm._t("default")], 2)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -22311,22 +22311,25 @@ var _default = {
   name: 'NinjaTabsHead',
   inject: ['eventBus'],
   data: function data() {
-    return {};
+    return {
+      first_left: -1
+    };
   },
   mounted: function mounted() {
     var _this = this;
 
     this.eventBus.$on('update:selected', function (name, item) {
-      _this.x = true;
-
       var _item$$el$getBounding = item.$el.getBoundingClientRect(),
           width = _item$$el$getBounding.width,
           height = _item$$el$getBounding.height,
           top = _item$$el$getBounding.top,
           left = _item$$el$getBounding.left;
 
+      console.log(left);
+      if (_this.first_left === -1) _this.first_left = left;
+      console.log(_this.first_left);
       _this.$refs.line.style.width = "".concat(width, "px");
-      _this.$refs.line.style.left = "".concat(left, "px");
+      _this.$refs.line.style.left = "".concat(left - _this.first_left, "px");
     });
   }
 };
@@ -23290,7 +23293,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41783" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41127" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

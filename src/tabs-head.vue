@@ -15,15 +15,18 @@ export default {
   inject: ['eventBus'],
   data(){
     return{
+      first_left: -1
     }
   },
   mounted() {
     this.eventBus.$on('update:selected', (name, item) => {
-      this.x = true
       let {width, height, top, left} = item.$el.getBoundingClientRect()
+      console.log(left)
+      if(this.first_left === -1)
+      this.first_left = left
+      console.log(this.first_left)
       this.$refs.line.style.width = `${width}px`
-      this.$refs.line.style.left = `${left}px`
-
+      this.$refs.line.style.left = `${left - this.first_left}px`
     })
   }
 }
@@ -45,6 +48,7 @@ $border-color: #ddd;
   > .line {
     position: absolute;
     bottom: 0;
+    left: 0;
     border-bottom: 2px solid $blue;
     transition: all 300ms;
   }
