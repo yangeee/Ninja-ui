@@ -1,4 +1,5 @@
 module.exports = {
     // 选项...
-    runtimeCompiler: true
+    runtimeCompiler: true,
+   
   }

@@ -1,8 +1,8 @@
 <template>
   <transition name="fade">
-    <div class="sider" v-if="visible">
+    <div  class="sider" v-if="visible">
       <slot></slot>
-      <button @click="visible=false">close</button>
+    <button @click="visible=false">close</button>
     </div>
   </transition>
 </template>
@@ -31,16 +31,14 @@ export default {
   position: relative;
   > button {
     position: absolute;
-    top: 0;
+    bottom: 0;
     right: 0;
   }
 }
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 2.5s;
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
 }
-.fade-enter,
-.fade-leave-to {
-  margin-left: -200px;
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <button class="n-button" :class="{[`icon-${iconPosition}`]: true}" @click="$emit('click')">
+  <button class="n-button" :class="classList" @click="$emit('click')">
     <n-icon class="icon" v-if="icon && !loading" :name="icon"></n-icon>
     <n-icon class="loading icon" name="loading" v-if="loading"></n-icon>
     <div class="content">
@@ -29,11 +29,19 @@ export default {
       validator(value) {
         return (value === 'left' || value === 'right') ? true : false
       }
-    }
+    },
+    
   },
   data() {
     return {
-
+    }
+  },
+  computed: {
+    classList() {
+      
+      return {
+        [`icon-${this.iconPosition}`]: true,
+      }
     }
   }
 }
@@ -76,16 +84,16 @@ $font-color-hover: #409eff;
   cursor: pointer;
   box-sizing: border-box;
   outline: none;
-  &:hover {
+  &:hover:not([disabled]) {
     border-color: $border-color-hover;
     color: $font-color-hover;
   }
-  &:focus {
+  &:focus:not([disabled]) {
     color: #409eff;
     border-color: #c6e2ff;
     background-color: #ecf5ff;
   }
-   &:active {
+  &:active:not([disabled]) {
     color: #3a8ee6;
     border-color: #3a8ee6;
     outline: none;
@@ -93,6 +101,7 @@ $font-color-hover: #409eff;
   > .icon {
     order: 1;
     margin-right: 0.1em;
+    margin-top: 0.15em;
   }
   > .content {
     order: 2;

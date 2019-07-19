@@ -4,5 +4,5 @@ title: 'Layout - 布局'
 
 我就是帅气的按钮: 
 <clientOnly>
-<button-demos></button-demos>
+<layout-demos></layout-demos>
 </clientOnly>

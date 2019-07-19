@@ -20962,17 +20962,8 @@ var _icon = _interopRequireDefault(require("./icon"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var _default = {
   name: '',
   components: {
@@ -20994,6 +20985,11 @@ var _default = {
   },
   data: function data() {
     return {};
+  },
+  computed: {
+    classList: function classList() {
+      return _defineProperty({}, "icon-".concat(this.iconPosition), true);
+    }
   }
 };
 exports.default = _default;
@@ -21006,7 +21002,6 @@ exports.default = _default;
         /* template */
         Object.assign($c00f4a, (function () {
           var render = function() {
-  var _obj
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
@@ -21014,7 +21009,7 @@ exports.default = _default;
     "button",
     {
       staticClass: "n-button",
-      class: ((_obj = {}), (_obj["icon-" + _vm.iconPosition] = true), _obj),
+      class: _vm.classList,
       on: {
         click: function($event) {
           return _vm.$emit("click")
@@ -21584,7 +21579,16 @@ exports.default = void 0;
 //
 //
 var _default = {
-  name: ''
+  name: '',
+  props: {
+    height: {
+      type: String,
+      default: '60'
+    }
+  },
+  mounted: function mounted() {
+    console.log(document.querySelector('.header').style);
+  }
 };
 exports.default = _default;
         var $f8fdf4 = exports.default || module.exports;
@@ -23293,7 +23297,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41127" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38031" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

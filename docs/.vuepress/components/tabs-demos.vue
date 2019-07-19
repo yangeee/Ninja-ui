@@ -14,8 +14,6 @@
         <n-tabs-pane name="man">男人</n-tabs-pane>
       </n-tabs-body>
     </n-tabs>
-    <p>代码展示：</p>
-    <pre><code>{{content}}</code></pre>
   </div>
 </template>
 
@@ -42,31 +40,7 @@ export default {
   },
   data() {
     return {
-      content: `
-        <n-tabs selected="woman">
-      <n-tabs-head>
-          <n-tabs-item name="woman">
-              <n-icon name="settings"></n-icon>美女
-          </n-tabs-item>
-          <n-tabs-item name="sport">
-              运动
-          </n-tabs-item>
-          <n-tabs-item name="man">
-              男人
-          </n-tabs-item>
-      </n-tabs-head>
-      <n-tabs-body>
-          <n-tabs-pane name="woman">
-          </n-tabs-pane>
-          <n-tabs-pane name="sport">
-              运动
-          </n-tabs-pane>
-          <n-tabs-pane name="man">
-              男人
-          </n-tabs-pane>
-      </n-tabs-body>
-    </n-tabs>
-         `.trim()
+     
     }
 
   }
