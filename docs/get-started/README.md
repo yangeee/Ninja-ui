@@ -2,7 +2,7 @@
 title: '快速开始'
 ---
 
-## 步骤 ##
+
 安装ninja-ui:
 ```
 npm install ninja-ui
