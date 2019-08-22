@@ -16,8 +16,8 @@ module.exports = {
         collapsable: false,
         children: [
           '/components/button',
-          '/components/tabs',
           '/components/popover',
+          '/components/tabs',
           '/components/toast',
           '/components/collapse',
           '/components/layout',

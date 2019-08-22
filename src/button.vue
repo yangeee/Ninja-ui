@@ -23,7 +23,7 @@ export default {
       type: Boolean,
       default: false
     },
-    iconPosition: {
+    position: {
       type: String,
       default: 'left',
       validator(value) {
@@ -38,9 +38,8 @@ export default {
   },
   computed: {
     classList() {
-      
       return {
-        [`icon-${this.iconPosition}`]: true,
+        [`icon-${this.position}`]: true,
       }
     }
   }
@@ -56,7 +55,7 @@ $border-radius: 4px;
 $button-active-bg: #eee;
 $color: #333;
 $border-color: rgb(200, 200, 200);
-$border-color-hover: rgba(66, 160, 254, 0.3);
+$border-color-hover: rgba(34, 119, 204, 0.3);
 $font-color-hover: #409eff;
 @keyframes spin {
   0% {
@@ -90,12 +89,18 @@ $font-color-hover: #409eff;
  
   &:focus:not([disabled]) {
     border-color: #c6e2ff;
-    background-color: #ecf5ff;
+    color: #3a8ee6;
+    .n-icon{
+      fill:#3a8ee6;
+    }
   }
   &:active:not([disabled]) {
     color: #3a8ee6;
     border-color: #3a8ee6;
     outline: none;
+    .n-icon{
+      fill:#3a8ee6;
+    }
   }
   > .icon {
     order: 1;

@@ -123,7 +123,7 @@ export default {
       }
       contentWrapper.style.left = positions[this.position].left + 'px'
       contentWrapper.style.top = positions[this.position].top + 'px'
-
+      
     },
     onClickDocument(e) {
       if (this.$refs.popover &&
@@ -164,7 +164,7 @@ export default {
 
 
 <style scoped lang='scss'>
-$border-color: #333;
+$border-color: #eee;
 $border-raidus: 4px;
 .popover {
   display: inline-block;
@@ -175,24 +175,26 @@ $border-raidus: 4px;
   position: absolute;
   border: 1px solid $border-color;
   border-radius: $border-raidus;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   padding: 0.5em 1em;
   word-break: break-all;
   max-width: 20em;
+  z-index: 6666;
+  background: white;
   &::before,
   &::after {
     content: "";
-    border: 10px solid transparent;
+    border: 5px solid transparent;
     display: block;
     width: 0;
     height: 0;
     position: absolute;
   }
   &.position-top {
-    margin-top: -10px;
+    margin-top: -5px;
     transform: translateY(-100%);
     &::before {
-      border-top-color: black;
+      border-top-color: $border-color;
       border-bottom: none;
       top: 100%;
     }
@@ -207,7 +209,7 @@ $border-raidus: 4px;
     transform: translateY(100%);
     &::before {
       border-top: none;
-      border-bottom-color: black;
+      border-bottom-color: $border-color;
       bottom: 100%;
     }
     &::after {
@@ -217,7 +219,7 @@ $border-raidus: 4px;
     }
   }
   &.position-left {
-    margin-left: -10px;
+    margin-left: -5px;
     transform: translateX(-100%);
     &::before,
     &::after {
@@ -225,7 +227,7 @@ $border-raidus: 4px;
     }
     &::before {
       border-right: none;
-      border-left-color: black;
+      border-left-color: $border-color;
       top: 50%;
       left: 100%;
     }
@@ -237,7 +239,7 @@ $border-raidus: 4px;
     }
   }
   &.position-right {
-    margin-left: 10px;
+    margin-left: 5px;
     &::before,
     &::after {
       border-left: none;
@@ -246,7 +248,7 @@ $border-raidus: 4px;
     }
     &::before {
       border-left: none;
-      border-right-color: black;
+      border-right-color: $border-color;
       right: 100%;
     }
     &::after {
