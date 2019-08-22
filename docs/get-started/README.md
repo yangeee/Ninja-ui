@@ -2,24 +2,8 @@
 title: '快速开始'
 ---
 
+本 UI 库沿袭 ElementUI 写法，每个组件前面均添加 n 字母表示相应组件：  
 
-安装ninja-ui:
-```
-npm install ninja-ui
-```
+例如： n-button、n-popover
 
-引入Ninja-ui:
-```
-import Vue from 'vue';
-import NinjaUI from 'ninja-ui';
-import App from './App.vue';
-
-Vue.use(NinjaUI);
-
-new Vue({
-  el: '#app',
-  render: h => h(App)
-});
-```
-<br>
-可以愉快的使用相应的 UI 组件啦
+详细API表格待完善～

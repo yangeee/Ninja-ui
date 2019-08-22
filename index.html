@@ -15,6 +15,7 @@
 
         body {
             font-size: 16px;
+            padding: 200px;
         }
         
     </style>
@@ -37,32 +38,11 @@
 
 
 
-        <div class="tabs11">
-            <n-tabs selected="woman">
-                <n-tabs-head>
-                    <n-tabs-item name="woman">
-                        <n-icon name="settings"></n-icon>美女
-                    </n-tabs-item>
-                    <n-tabs-item name="sport" disabled>运动</n-tabs-item>
-                    <n-tabs-item name="man">男人</n-tabs-item>
-                </n-tabs-head>
-                <n-tabs-body>
-                    <n-tabs-pane name="woman">女人</n-tabs-pane>
-                    <n-tabs-pane name="sport">运动</n-tabs-pane>
-                    <n-tabs-pane name="man">男人</n-tabs-pane>
-                </n-tabs-body>
-            </n-tabs>
-        </div>
-        <button @click="showToastTop">top</button>
-        <button @click="showToastMiddle">middle</button>
-        <button @click="showToastBottom">bottom</button>
+        <n-button @click="showToastTop">top</n-button>
+        <n-button @click="showToastMiddle">middle</n-button>
+        <n-button @click="showToastBottom">bottom</n-button>
 
-        <n-popover position="right">
-            <template v-slot:content>
-                我是内容
-            </template>
-            <n-button>点我</n-button>
-        </n-popover>
+        
 
         <n-collapse :selected.sync="selectedTab">
             <n-collapse-item title="体育111" name="1">内容111</n-collapse-item>
@@ -70,7 +50,20 @@
             <n-collapse-item title="体育333" name="3">内容333</n-collapse-item>
         </n-collapse>
 
-        <n-button>默认按钮</n-button>
+        <n-tabs selected="woman">
+            <n-tabs-head>
+              <n-tabs-item name="woman">
+                <n-icon name="settings"></n-icon>美女
+              </n-tabs-item>
+              <n-tabs-item name="sport" disabled>运动</n-tabs-item>
+              <n-tabs-item name="man">男人</n-tabs-item>
+            </n-tabs-head>
+              <n-tabs-body>
+                <n-tabs-pane name="woman">女人</n-tabs-pane>
+                <n-tabs-pane name="sport">运动</n-tabs-pane>
+                <n-tabs-pane name="man">男人</n-tabs-pane>
+              </n-tabs-body>
+          </n-tabs>
 
 
     </div>

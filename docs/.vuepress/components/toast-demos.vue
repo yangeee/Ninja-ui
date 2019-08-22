@@ -1,23 +1,34 @@
----
-title: 'Toast - 消息提示'
----
+<template>
+  <div>
+    <n-button @click="showToast('top', false)">top</n-button>
+    <n-button @click="showToast('middle', 10)">middle</n-button>
+    <n-button @click="showToast('bottom', false)">bottom</n-button>
+  </div>
+</template>
 
-### 示例及使用方法 ###
-<clientOnly>
-<toast-demos></toast-demos>
-</clientOnly>
 
-代码展示：    
+<script>
+import Toast from "../../../src/toast";
+import Button from "../../../src/button";
+import Vue from 'vue/dist/vue'
 
-传入提示位置以及自动关闭时间参数
-```
-<n-button @click="showToast('top', 5)">top</n-button>
-<n-button @click="showToast('middle', 10)">middle</n-button>
-<n-button @click="showToast('bottom', false)">bottom</n-button>
-```
-将以下三个函数添加至methods：
-```
-toast(message, toastOptions) {
+
+
+export default {
+  components: {
+    'n-button': Button,
+    'n-toast': Toast,
+  },
+  created() {
+  },
+  data() {
+    return {
+      currentToast: null
+    }
+
+  },
+  methods: {
+    toast(message, toastOptions) {
       if (this.currentToast) {
         this.currentToast.close()
       }
@@ -46,4 +57,8 @@ toast(message, toastOptions) {
         autoClose: time
       })
     }
-```
+  }
+}
+</script>
+
+

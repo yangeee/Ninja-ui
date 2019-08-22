@@ -17,10 +17,12 @@ module.exports = {
         children: [
           '/components/button',
           '/components/tabs',
+          '/components/popover',
+          '/components/toast',
+          '/components/collapse',
           '/components/layout',
           '/components/grid',
-          '/components/toast',
-          '/components/popover',
+
         ]
       }
     ]

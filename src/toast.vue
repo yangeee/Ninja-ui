@@ -4,7 +4,7 @@
       <slot v-if="!enableHtml"></slot>
       <div v-else v-html="$slots.default[0]"></div>
       <span class="line" ref="line"></span>
-      <span class="close" v-if="closeButton" @click="onClickClose()">{{closeButton.text}}</span>
+      <span class="close" v-if="closeButton" @click="onClickClose">{{closeButton.text}}</span>
     </div>
   </div>
 </template>
@@ -122,6 +122,7 @@ $animation-duration: 400ms;
   }
 }
 .wrapper {
+  z-index: 111;
   position: fixed;
   left: 50%;
   transform: translateX(-50%);

@@ -86,10 +86,9 @@ $font-color-hover: #409eff;
   outline: none;
   &:hover:not([disabled]) {
     border-color: $border-color-hover;
-    color: $font-color-hover;
   }
+ 
   &:focus:not([disabled]) {
-    color: #409eff;
     border-color: #c6e2ff;
     background-color: #ecf5ff;
   }
