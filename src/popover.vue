@@ -109,7 +109,7 @@ export default {
           left: left + window.scrollX
         },
         bottom: {
-          top: top + window.scrollY,
+          top: top + window.scrollY - height2 + height,
           left: left + window.scrollX
         },
         left: {
@@ -123,7 +123,7 @@ export default {
       }
       contentWrapper.style.left = positions[this.position].left + 'px'
       contentWrapper.style.top = positions[this.position].top + 'px'
-      
+
     },
     onClickDocument(e) {
       if (this.$refs.popover &&
