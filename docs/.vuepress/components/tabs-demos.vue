@@ -1,17 +1,17 @@
 <template>
   <div>
-    <n-tabs selected="woman">
+    <n-tabs selected="tab1">
       <n-tabs-head>
-        <n-tabs-item name="woman">
-          <n-icon name="settings"></n-icon>美女
+        <n-tabs-item name="tab1">
+          <n-icon name="settings"></n-icon>标签一
         </n-tabs-item>
-        <n-tabs-item name="sport" disabled>运动</n-tabs-item>
-        <n-tabs-item name="man">男人</n-tabs-item>
+        <n-tabs-item name="tab2">标签二</n-tabs-item>
+        <n-tabs-item name="tab3" disabled>标签三</n-tabs-item>
       </n-tabs-head>
       <n-tabs-body>
-        <n-tabs-pane name="woman">女人</n-tabs-pane>
-        <n-tabs-pane name="sport">运动</n-tabs-pane>
-        <n-tabs-pane name="man">男人</n-tabs-pane>
+        <n-tabs-pane name="tab1">标签一</n-tabs-pane>
+        <n-tabs-pane name="tab2">标签二</n-tabs-pane>
+        <n-tabs-pane name="tab3">标签三</n-tabs-pane>
       </n-tabs-body>
     </n-tabs>
   </div>
@@ -40,7 +40,7 @@ export default {
   },
   data() {
     return {
-     
+
     }
 
   }

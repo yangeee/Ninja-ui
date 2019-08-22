@@ -2,15 +2,18 @@
 title: 'Toast - 消息提示'
 ---
 
-### 示例及使用方法 ###
+# Toast 消息提示
+
+<h2 style="margin-bottom:1em;">基本用法</h2>    
+
 <clientOnly>
 <toast-demos></toast-demos>
 </clientOnly>
 
-代码展示：    
+<h2>代码展示</h2>    
 
 传入提示位置以及自动关闭时间参数
-```
+```vue
 <n-button @click="showToast('top', 5)">top</n-button>
 <n-button @click="showToast('middle', 10)">middle</n-button>
 <n-button @click="showToast('bottom', false)">bottom</n-button>

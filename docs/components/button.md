@@ -2,7 +2,9 @@
 title: 'Button - 按钮'
 ---
 
-# 示例及使用方法
+# Button 按钮
+
+<h2 style="margin-bottom:1em;">基本用法</h2>    
 
 <clientOnly>
 <button-demos></button-demos>

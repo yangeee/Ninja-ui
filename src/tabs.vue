@@ -45,7 +45,7 @@ export default {
       if (vm.$options.name === 'NinjaTabsHead') {
         vm.$children.forEach((item) => {
           if (item.$options.name === 'NinjaTabsItem' && item.name === this.selected_item) {
-            this.eventBus.$emit('update:selected', this.name, item)
+            this.eventBus.$emit('update:selected', item.name, item)
           }
         })
       }

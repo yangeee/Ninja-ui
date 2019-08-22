@@ -18,6 +18,9 @@ export default {
       first_left: -1
     }
   },
+  created(){
+    
+  },
   mounted() {
     this.eventBus.$on('update:selected', (name, item) => {
       let {width, height, top, left} = item.$el.getBoundingClientRect()
@@ -33,7 +36,7 @@ export default {
 
 <style scoped lang="scss">
 $tabs-height: 40px;
-$blue: blue;
+$blue: #409EFF;
 $border-color: #ddd;
 .tabs-head {
   display: flex;
@@ -42,10 +45,10 @@ $border-color: #ddd;
   align-items: center;
   position: relative;
   margin-bottom: 10px;
-  border-bottom: 1px solid $border-color;
+  border-bottom: 2px solid $border-color;
   > .line {
     position: absolute;
-    bottom: 0;
+    bottom: -2px;
     left: 0;
     border-bottom: 2px solid $blue;
     transition: all 300ms;

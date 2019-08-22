@@ -18,5 +18,7 @@ export default {
 .n-icon {
   width: 1em;
   height: 1em;
+  position: relative;
+  top:1px;
 }
 </style>

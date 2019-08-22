@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2>基础用法</h2>
     <n-popover position="left">
       <template v-slot:content>
         <h3>标题</h3>这是一段内容,这是一段内容,这是一段内容,这是一段内容。
@@ -47,11 +46,4 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
-h2 {
-  font-size: 1.65rem;
-  padding-bottom: 0.3rem;
-  border-bottom: 1px solid #eaecef;
-}
-</style>
 

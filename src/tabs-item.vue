@@ -30,7 +30,7 @@ export default {
       this.eventBus.$on('update:selected', (name) => {
         return this.item_active = name === this.name
       })
-    
+
   },
   methods: {
     onClick() {
@@ -52,7 +52,7 @@ export default {
 
 
 <style scoped lang="scss">
-$blue: blue;
+$active-color: #409eff;
 $disabled-text-color: #aaa;
 .tabs-item {
   flex-shrink: 0;
@@ -63,7 +63,10 @@ $disabled-text-color: #aaa;
   display: flex;
   align-items: center;
   &.item_active {
-    color: $blue;
+    color: $active-color;
+    .n-icon {
+      fill: #409eff;
+    }
   }
   &.disabled {
     color: $disabled-text-color;

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2>基础用法</h2>
     <n-button>默认按钮</n-button>
     <n-button icon="left">向左按钮</n-button>
     <n-button icon="settings" position="right">设置按钮</n-button>
@@ -31,12 +30,6 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
-h2 {
-  font-size: 1.65rem;
-  padding-bottom: 0.3rem;
-  border-bottom: 1px solid #eaecef;
-}
-</style>
+
 
 

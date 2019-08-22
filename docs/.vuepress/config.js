@@ -19,9 +19,9 @@ module.exports = {
           '/components/popover',
           '/components/tabs',
           '/components/toast',
-          '/components/collapse',
-          '/components/layout',
-          '/components/grid',
+          // '/components/collapse',
+          // '/components/layout',
+          // '/components/grid',
 
         ]
       }

@@ -1,7 +1,9 @@
 ---
 title: 'Popover - 弹出框'
 ---
-### 示例及使用方法 ###
+# Popover 弹出框
+
+<h2 style="margin-bottom:1em;">基本用法</h2>    
 
 <clientOnly>
 <popover-demos></popover-demos>
